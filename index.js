@@ -4,10 +4,13 @@ const app = express()
 const mongoose = require('mongoose');
 const config = require('config');
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
+const setMiddlewares = require('./middlewares/middlewares');
+const setRoutes = require('./routes/routes');
+setMiddlewares(app)
+setRoutes(app)
 
+app.set('view engine', 'ejs')
+app.set('views', 'views')
 
 const PORT = process.env.PORT || 5050
 
