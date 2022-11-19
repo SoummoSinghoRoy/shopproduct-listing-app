@@ -1,6 +1,39 @@
 <%- include('../../partials/header.ejs') %> 
 
-<h2>SignUp Now</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="card mt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-secondary">Create your profile</h4>
+          <p class="card-subtitle text-muted my-3"><span class="text-warning fw-bold">Notice: </span>after creating a profile the shop creation feature will be available and you cannot add more shops using one email.</p>
+          <form action="" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="name" class="form-label">Enter full name</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Enter correct email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Enter strong password</label>
+              <input class="form-control" type="password" id="password" name="password">
+            </div>
+            <div class="mb-3">
+              <label for="profilepic" class="form-label">Attach profile pic</label>
+              <input class="form-control" type="file" id="profilepic" name="profilepic">
+              <p class="text-warning mt-2" id="warning">Profilepic must be less then 50kb & resulation 200px * 200px</p>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Create Profile">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script src="/scripts/profilepicValidation.js"></script>
 </body>
 </html>
