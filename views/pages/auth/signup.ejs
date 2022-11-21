@@ -13,10 +13,21 @@
               <label for="name" class="form-label">Enter full name</label>
               <input type="text" class="form-control" id="name" name="name">
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Enter correct email</label>
-              <input type="email" class="form-control" id="email" name="email">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="mobile_no" class="form-label">Enter correct mobile no.</label>
+                  <input type="tel" class="form-control" id="mobile_no" name="mobile_no">
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Enter correct email</label>
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+              </div>
             </div>
+            
             <div class="mb-3">
               <label for="password" class="form-label">Enter strong password</label>
               <input class="form-control" type="password" id="password" name="password">
@@ -26,7 +37,14 @@
               <input class="form-control" type="file" id="profilepic" name="profilepic">
               <p class="text-warning mt-2" id="warning">Profilepic must be less then 50kb & resulation 200px * 200px</p>
             </div>
-            <input class="btn btn-primary" type="submit" value="Create Profile">
+            <div class="row">
+              <div class="col-4">
+                <input class="btn btn-primary" type="submit" value="Create Profile">
+              </div>
+              <div class="col-8">
+                <p class="text-end mt-1 text-secondary">Have an account? <a href="/auth/login">Log in</a></p>
+              </div>
+            </div>
           </form>
         </div>
       </div>

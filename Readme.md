@@ -1,5 +1,5 @@
-* Task - signup.ejs e template er kaj korte hobe + ekta instruction thakbe je sign up korley se shop create er page pabe.
-Multer configure korte hobe.
+* Task - img related backend er kaj korar somoy multer configure korte hobe.
+* frontend validation isn't secure so we shold use backend validaiton otherwise application will fall in trouble.
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search
@@ -10,3 +10,7 @@ Multer configure korte hobe.
 6. But shop owner will get only own shop products in all products page.
 7. Existing user cannot create more than one shop with one email. While creating the shop, email + password validation should be checked so that none of them match.
 8. Need all shops products which can get by a api.
+
+### Completed tasks -
+1. signup & login template done,
+2. signup img frontend validation done(need backend validation)
