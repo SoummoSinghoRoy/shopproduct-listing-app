@@ -1,5 +1,5 @@
-* Task - img related backend er kaj korar somoy multer configure korte hobe.
-* frontend validation isn't secure so we shold use backend validaiton otherwise application will fall in trouble.
+* Task - need to configure multer for do img related backend work & make validation for profilepic.
+* Task - need to complete design createShop template.
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search
