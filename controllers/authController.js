@@ -9,6 +9,7 @@ exports.signUpGetController = (req, res, next) => {
 
 exports.signUpPostController = async (req, res, next) => {
   console.log(req.body);
+  console.log(req.file);
   let errors = validationResult(req).formatWith(error => error.msg)
   res.render('pages/auth/signup.ejs', {
     title: 'Sign up here',

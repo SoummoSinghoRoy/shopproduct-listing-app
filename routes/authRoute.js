@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const signupValidator = require('../validator/auth/signupValidator');
 
+const upload = require('../middlewares/uploadMiddleware');
+const signupValidator = require('../validator/auth/signupValidator');
 const {
   signUpGetController,
   signUpPostController,
@@ -8,7 +9,7 @@ const {
 } = require('../controllers/authController');
 
 router.get('/signup', signUpGetController);
-router.post('/signup', signupValidator, signUpPostController)
+router.post('/signup', upload.single('profilepic'), signupValidator, signUpPostController)
 
 router.get('/login', logInGetController)
 

@@ -1,4 +1,4 @@
-* Task - need to configure multer for do img related backend work & make validation for profilepic.
+* Task - multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. kintu ami mone korchi eta amar validation er purbey multer nijer moto validation kore error throw korche, eta solve korte hobe ekhetre configuration er oi jayjai kono prokar validation er kaj thakle dekhte hobe.
 * Task - need to complete design createShop template.
 
 ### Project Requirements 
