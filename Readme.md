@@ -1,5 +1,6 @@
-* Task - Signup kore profile/user create er por session + authentication niye kaj korte.
-* Task - need to complete design createShop template.
+* Task 1 - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe.
+* Task 2 - login functionality niye kaj hole authentication + session niye kaj korte hobe.
+* Task 3 - need to complete design createShop template.
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search
