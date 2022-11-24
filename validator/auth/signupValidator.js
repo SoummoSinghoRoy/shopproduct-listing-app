@@ -34,12 +34,4 @@ module.exports = [
     .notEmpty().withMessage(`Password can't be empty`)
     .isLength({min: 5}).withMessage(`Password can't less than 5 chars`)
     .trim(),
-  body('profilepic')
-    .notEmpty().withMessage('Must select a profile pic')
-    .custom((value, {req}) => {
-      const expectedsize = 1024*50
-      if(req.file.size > expectedsize) {
-        throw new Error(`Profilepic can't greater than 50kb`)
-      }
-    })
 ]

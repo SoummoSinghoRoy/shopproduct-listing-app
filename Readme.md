@@ -1,4 +1,4 @@
-* Task - multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. kintu ami mone korchi eta amar validation er purbey multer nijer moto validation kore error throw korche, eta solve korte hobe ekhetre configuration er oi jayjai kono prokar validation er kaj thakle dekhte hobe.
+* Task - Signup kore profile/user create er por session + authentication niye kaj korte.
 * Task - need to complete design createShop template.
 
 ### Project Requirements 
@@ -10,7 +10,13 @@
 6. But shop owner will get only own shop products in all products page.
 7. Existing user cannot create more than one shop with one email. While creating the shop, email + password validation should be checked so that none of them match.
 8. Need all shops products which can get by a api.
+9. all neccessery router will be restricted such as - shop create, signup etc.
+10. if a user didn't have a shop this user can't operate other operation such as product add, edit, delete
+
+### Unsuccessfull Task
+1. multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. ja ekhono solve korte parini.
+2. user er data save korar somoy user jokhon sign up korche tokhon profile pic validation er issue'r jonyo empty hoye jacche fole data save hocche na. ja ekhono solve korte parini.
 
 ### Completed tasks -
 1. signup & login template done,
-2. signup img frontend validation done(need backend validation)
+2. signup backedn validation done(but face a problem when occured a error error message don't show in template but multer throw their premade error message)

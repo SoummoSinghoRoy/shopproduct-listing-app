@@ -1,6 +1,11 @@
 const authRoute = require('./authRoute');
+const shopRoute = require('./shopRoute');
 
 const routes = [
+  {
+    path: '/shop',
+    handler: shopRoute
+  },
   {
     path: '/auth',
     handler: authRoute

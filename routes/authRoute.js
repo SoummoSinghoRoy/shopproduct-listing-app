@@ -9,8 +9,8 @@ const {
 } = require('../controllers/authController');
 
 router.get('/signup', signUpGetController);
-router.post('/signup', upload.single('profilepic'), signupValidator, signUpPostController)
+router.post('/signup', upload.single('profilepic'), signupValidator, signUpPostController);
 
-router.get('/login', logInGetController)
+router.get('/login', logInGetController);
 
 module.exports = router;
