@@ -1,4 +1,4 @@
-* Task 1 - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe.
+* Task 1 - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task 2 - login functionality niye kaj hole authentication + session niye kaj korte hobe.
 * Task 3 - need to complete design createShop template.
 
@@ -20,4 +20,9 @@
 
 ### Completed tasks -
 1. signup & login template done,
-2. signup backedn validation done(but face a problem when occured a error error message don't show in template but multer throw their premade error message)
+2. signup backend validation done(but face a problem when occured a error error message don't show in template but multer throw their premade error message)
+3. login backend validation done.
+
+#### What i learned to do this project - 
+
+1. When worked with authentication we have to do work with session first then authentication, because when we work with session we must keep user activity record so authentication work with based on user data & session. 

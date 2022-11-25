@@ -81,6 +81,8 @@ exports.loginPostController = async (req, res, next) => {
         errors: errors.mapped()
       })
     }
+    req.session.isLoggedIn = true
+    req.session.userprofile = profile
     return res.redirect('/shop/allproducts')
   } catch (error) {
     next(error)
