@@ -7,13 +7,17 @@ const {
   signUpGetController,
   signUpPostController,
   logInGetController,
-  loginPostController
+  loginPostController,
+  logOutController
 } = require('../controllers/authController');
+const {isAuthenticated, isUnAuthenticated} = require('../middlewares/authMiddleware');
 
-router.get('/signup', signUpGetController);
-router.post('/signup', upload.single('profilepic'), signupValidator, signUpPostController);
+router.get('/signup', isUnAuthenticated, signUpGetController);
+router.post('/signup', isUnAuthenticated, upload.single('profilepic'), signupValidator, signUpPostController);
 
-router.get('/login', logInGetController);
-router.post('/login', loginValidator, loginPostController);
+router.get('/login', isUnAuthenticated, logInGetController);
+router.post('/login', isUnAuthenticated, loginValidator, loginPostController);
+
+router.get('/logout', isAuthenticated, logOutController);
 
 module.exports = router;

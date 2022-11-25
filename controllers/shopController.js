@@ -8,7 +8,7 @@ exports.createShopGetController = (req, res, next) => {
 
 // check if a shop exist under a user then render allproducts page.
 exports.allProductsGetController = (req, res, next) => {
-  res.render('pages/shop/allproducts.ejs', {
+  res.render('pages/shop/allproductsOwner.ejs', {
     title: 'All products'
   })
 }

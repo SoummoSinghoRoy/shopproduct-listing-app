@@ -4,10 +4,11 @@ const {
   createShopGetController,
   allProductsGetController
 } = require('../controllers/shopController');
+const {isAuthenticated} = require('../middlewares/authMiddleware');
 
-router.get('/createshop', createShopGetController);
+router.get('/createshop', isAuthenticated, createShopGetController);
 
-router.get('/allproducts', allProductsGetController);
+router.get('/allproducts', isAuthenticated, allProductsGetController);
 
 
 module.exports = router

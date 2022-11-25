@@ -9,23 +9,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-dark" aria-current="page" href="#">All Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Log Out</a>
-        </li>
+        <% if (isLoggedIn) { %>
+          <li class="nav-item">
+            <a class="nav-link text-dark" aria-current="page" href="/shop/allproducts">All Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/auth/logout">Log Out</a>
+          </li>
+        <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-link text-dark" aria-current="page" href="/allproducts">All Products</a>
+            <!-- this all products navigation for general user which will work to show all products from all shops. -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/auth/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/auth/login">Log In</a>
+          </li>
+        <% } %> 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <% if (isLoggedIn) { %>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      <% } %>
     </div>
   </div>
 </nav>

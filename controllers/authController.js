@@ -83,8 +83,22 @@ exports.loginPostController = async (req, res, next) => {
     }
     req.session.isLoggedIn = true
     req.session.userprofile = profile
+    req.session.save(err => {
+      if(err) {
+        return next(err)
+      }
+    })
     return res.redirect('/shop/allproducts')
   } catch (error) {
     next(error)
   }
+}
+
+exports.logOutController = (req, res, next) => {
+  req.session.destroy(err => {
+    if(err) {
+      return next(err)
+    }
+    return res.redirect('/auth/login')
+  })
 }

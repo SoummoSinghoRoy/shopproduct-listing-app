@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const session = require('express-session');
 const config = require('config');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const { bindUserProfileWithReq } = require('./authMiddleware');
+const setLocals = require('./setLocals');
 
 const store = new MongoDBStore({
   uri: `mongodb+srv://${config.get('db-admin')}:${config.get('db-password')}@shopproduct-listing.ecf4uv6.mongodb.net/shopproduct-listing-app`,
@@ -20,7 +22,9 @@ const middlewares = [
     resave: false,
     saveUninitialized: false,
     store: store
-  })
+  }),
+  bindUserProfileWithReq(),
+  setLocals()
 ]
 
 module.exports = (app) => {
