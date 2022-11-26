@@ -23,6 +23,7 @@
 2. signup backend validation done(but face a problem when occured a error error message don't show in template but multer throw their premade error message)
 3. login backend validation done.
 4. Login funcationality done, session + authentication work done.
+5. When user sign up first users session create also user will get create a shop page.
 
 #### What i learned to do this project - 
 

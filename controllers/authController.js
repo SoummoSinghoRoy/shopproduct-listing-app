@@ -30,6 +30,15 @@ exports.signUpPostController = async (req, res, next) => {
         profilepic: uploadedProfilepic
       })
       await profile.save()
+
+       req.session.isLoggedIn = true
+       req.session.userprofile = profile
+       req.session.save(err => {
+        if(err) {
+          return next(err)
+        }
+      })
+
       return res.redirect('/shop/createshop')
   
     } catch (error) {
@@ -67,6 +76,7 @@ exports.loginPostController = async (req, res, next) => {
 
   try {
     const profile = await User.findOne({email})
+
     if(!profile) {
       return res.render('pages/auth/login.ejs', {
         title: 'Log in here',
@@ -88,6 +98,7 @@ exports.loginPostController = async (req, res, next) => {
         return next(err)
       }
     })
+
     return res.redirect('/shop/allproducts')
   } catch (error) {
     next(error)

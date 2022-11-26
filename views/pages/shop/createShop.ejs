@@ -1,6 +1,74 @@
 <%- include('../../partials/header.ejs') %>
 
-<h2>Welcome to shop</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="card mt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-secondary">Create your shop</h4>
+          <p class="card-subtitle text-muted my-3"><span class="text-warning fw-bold">Notice: </span>after creating a profile the shop creation feature will be available and you cannot add more shops using one email.</p>
+          <form action="/auth/signup" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="email" class="form-label">Enter correct email</label>
+              <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" name="email">
+              <span class="text-danger">
+                <%= errors.email %> 
+              </span>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="fullname" class="form-label">Enter full name</label>
+                  <input type="text" class="form-control <%= errors.fullname ? 'is-invalid' : '' %>" id="fullname" name="fullname">
+                  <span class="text-danger">
+                    <%= errors.fullname %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="mobile_no" class="form-label">Enter correct mobile no.</label>
+                  <input type="tel" class="form-control <%= errors.mobile_no ? 'is-invalid' : '' %>" id="mobile_no" name="mobile_no">
+                  <span class="text-danger">
+                    <%= errors.mobile_no %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Enter strong password</label>
+              <input class="form-control <%= errors.password ? 'is-invalid' : '' %>" type="password" id="password" name="password">
+              <span class="text-danger">
+                <%= errors.password %> 
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <label for="profilepic" class="form-label">Attach profile pic</label>
+              <input class="form-control <%= errors.profilepic? 'is-invalid' : '' %>" type="file" id="profilepic" name="profilepic">
+              <% if (errors.profilepic) { %>
+                <p class="text-danger mt-2"><%= errors.profilepic %></p>
+              <% } else{%>
+                <p class="text-warning mt-2" id="warning">Profilepic must be less then 50kb & resulation 200px * 200px</p>
+              <% } %> 
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <input class="btn btn-primary" type="submit" value="Create Profile">
+              </div>
+              <div class="col-8">
+                <p class="text-end mt-1 text-secondary">Have an account? <a href="/auth/login">Log in</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
