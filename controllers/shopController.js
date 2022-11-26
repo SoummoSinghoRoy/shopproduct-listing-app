@@ -16,6 +16,15 @@ exports.createShopGetController = async (req, res, next) => {
   }
 }
 
+exports.createShopPostcontroller = (req, res, next) => {
+  console.log(req.file);
+  console.log(req.body);
+  res.render('pages/shop/createShop.ejs', {
+    title: 'Create a shop',
+    errors: {}
+  })
+}
+
 exports.allProductsGetController = async (req, res, next) => {
   try {
     const shop = await Shop.findOne({user: req.userprofile._id})

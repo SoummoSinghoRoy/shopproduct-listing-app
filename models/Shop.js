@@ -14,9 +14,16 @@ const ShopSchema = new Schema({
     maxlength: 500,
     trim: true
   },
+  contact_no: {
+    type: String,
+    required: true
+  },
   address: [
     {
-      street : String,
+      street : {
+        type: String,
+        required: true
+      },
       city: {
         type: String,
         required: true
@@ -31,6 +38,10 @@ const ShopSchema = new Schema({
       } 
     }
   ],
+  // shopimgs: {
+  //   type: [String],
+  //   required: true
+  // },
   shopimgs: [
     {
       img_1: String,

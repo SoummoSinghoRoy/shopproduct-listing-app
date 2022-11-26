@@ -3,66 +3,92 @@
 <div class="container">
   <div class="row">
     <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-8">
       <div class="card mt-2 px-2 shadow-sm">
         <div class="card-body">
-          <h4 class="card-title text-secondary">Create your shop</h4>
-          <p class="card-subtitle text-muted my-3"><span class="text-warning fw-bold">Notice: </span>after creating a profile the shop creation feature will be available and you cannot add more shops using one email.</p>
-          <form action="/auth/signup" method="post" enctype="multipart/form-data">
+          <h4 class="card-title text-secondary text-center mt-1">Create a shop</h4>
+          <form action="/shop/createshop" method="post" enctype="multipart/form-data" class="mt-5">
             <div class="mb-3">
-              <label for="email" class="form-label">Enter correct email</label>
-              <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" name="email">
+              <label for="shopname" class="form-label">Shop Name</label>
+              <input type="text" class="form-control <%= errors.shopname ? 'is-invalid' : '' %>" id="shopname" name="shopname" placeholder="shop name max-length 100 chars">
               <span class="text-danger">
-                <%= errors.email %> 
+                <%= errors.shopname %> 
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <p>Shop Description</p>
+              <div class="form-floating">
+                <textarea class="form-control" name="description" id="description" style="height: 140px;"></textarea>
+                <label for="description">Description min-length 100 & max-length 500</label>
+              </div>
+              <span class="text-danger">
+                <%= errors.description %> 
               </span>
             </div>
 
             <div class="row">
+              <h5>Shop Address & Contact</h5>
               <div class="col">
                 <div class="mb-3">
-                  <label for="fullname" class="form-label">Enter full name</label>
-                  <input type="text" class="form-control <%= errors.fullname ? 'is-invalid' : '' %>" id="fullname" name="fullname">
+                  <label for="street" class="form-label">Street</label>
+                  <input type="text" class="form-control <%= errors.street ? 'is-invalid' : '' %>" id="street" name="street">
                   <span class="text-danger">
-                    <%= errors.fullname %> 
+                    <%= errors.street %> 
                   </span>
                 </div>
               </div>
               <div class="col">
                 <div class="mb-3">
-                  <label for="mobile_no" class="form-label">Enter correct mobile no.</label>
-                  <input type="tel" class="form-control <%= errors.mobile_no ? 'is-invalid' : '' %>" id="mobile_no" name="mobile_no">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control <%= errors.city ? 'is-invalid' : '' %>" id="city" name="city">
                   <span class="text-danger">
-                    <%= errors.mobile_no %> 
+                    <%= errors.city %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="district" class="form-label">District</label>
+                  <input type="text" class="form-control <%= errors.district ? 'is-invalid' : '' %>" id="district" name="district">
+                  <span class="text-danger">
+                    <%= errors.district %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="country" class="form-label">Country</label>
+                  <input type="text" class="form-control <%= errors.country ? 'is-invalid' : '' %>" id="country" name="country">
+                  <span class="text-danger">
+                    <%= errors.country %> 
                   </span>
                 </div>
               </div>
             </div>
             
             <div class="mb-3">
-              <label for="password" class="form-label">Enter strong password</label>
-              <input class="form-control <%= errors.password ? 'is-invalid' : '' %>" type="password" id="password" name="password">
+              <label for="contact_no" class="form-label">Contact No</label>
+              <input class="form-control <%= errors.contact_no ? 'is-invalid' : '' %>" type="tel" id="contact_no" name="contact_no">
               <span class="text-danger">
-                <%= errors.password %> 
+                <%= errors.contact_no %> 
               </span>
             </div>
 
             <div class="mb-3">
-              <label for="profilepic" class="form-label">Attach profile pic</label>
-              <input class="form-control <%= errors.profilepic? 'is-invalid' : '' %>" type="file" id="profilepic" name="profilepic">
-              <% if (errors.profilepic) { %>
-                <p class="text-danger mt-2"><%= errors.profilepic %></p>
+              <label for="shopimgs" class="form-label">Attach shop pictures (must be select one)</label>
+              <input type="file" class="form-control <%= errors.shopimgs? 'is-invalid' : '' %>" id="shopimgs" name="shopimgs" multiple>
+              <% if (errors.shopimgs) { %>
+                <p class="text-danger mt-2"><%= errors.shopimgs %></p>
               <% } else{%>
-                <p class="text-warning mt-2" id="warning">Profilepic must be less then 50kb & resulation 200px * 200px</p>
+                <p class="text-warning mt-2" id="warning">shop images must be less then 500kb & resulation width 400px * height 250px</p>
               <% } %> 
             </div>
-            <div class="row">
-              <div class="col-4">
-                <input class="btn btn-primary" type="submit" value="Create Profile">
-              </div>
-              <div class="col-8">
-                <p class="text-end mt-1 text-secondary">Have an account? <a href="/auth/login">Log in</a></p>
-              </div>
-            </div>
+
+            <input class="btn btn-primary" type="submit" value="Create Shop">
           </form>
         </div>
       </div>
