@@ -14,7 +14,7 @@ exports.signUpPostController = async (req, res, next) => {
 
   if(req.file) {
     let errors = validationResult(req).formatWith(error => error.msg)
-    let uploadedProfilepic = `/uploads/profilePics/${req.file.filename}`
+    const uploadedProfilepic = `/uploads/profilePics/${req.file.filename}`
     if(!errors.isEmpty()) {
       return res.render('pages/auth/signup.ejs', {
         title: 'Sign up here',

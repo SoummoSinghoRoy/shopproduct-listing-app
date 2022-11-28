@@ -38,17 +38,17 @@ const ShopSchema = new Schema({
       } 
     }
   ],
-  // shopimgs: {
-  //   type: [String],
-  //   required: true
-  // },
-  shopimgs: [
-    {
-      img_1: String,
-      img_2: String,
-      img_3: String,
-    }
-  ],
+  shopimgs: {
+    type: [String],
+    required: true
+  },
+  // shopimgs: [
+  //   {
+  //     img_1: String,
+  //     img_2: String,
+  //     img_3: String,
+  //   }
+  // ],
   productcategories: [
     {
       food: {

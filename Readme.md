@@ -1,5 +1,5 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
-* Task - need to validation create shop page & need to solve multiple shop images items undefined issue.
+* Task - need to validation create shop page & need to solve multiple shop images db save undefined issue.
 * Task - When shop owner create a shop owner get viewshop/shopprofile page.
 
 
@@ -19,7 +19,7 @@
 ### Unsuccessfull Task
 1. multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. ja ekhono solve korte parini.
 2. user er data save korar somoy user jokhon sign up korche tokhon profile pic validation er issue'r jonyo empty hoye jacche fole data save hocche na. ja ekhono solve korte parini.
-3. When user upload multiple shop images in shop creation time, got images/file undefined.
+3. When user upload multiple shop images in shop creation time & save this imgs in db model at this time file saved as undefined.
 
 ### Completed tasks -
 1. signup & login template done,
@@ -34,3 +34,4 @@
 2. We can add own nesseccary property with request as a request object property like: req.user. We must bind loggedIn user because when a user send request the server verify this user data is exist & all request will perfom based on this user. Otherwise server will not understand that which user send request in server & what response server will back.
 3. If need to available nesseccary credentials for views all template of the application we can use res.locals. res.locals make available nesseccary credentials for views all template.   
 4. If we need to store multiple data for one credentials (such as - address) & have multiple input fields for get data then our model schema will be array of object, but we have no multiple field but need to store multiple data then our model schema type will be array/object.
+5. when we work with multiple uploaded file we use req.files for getting uploaded data but work with singular we use req.file.

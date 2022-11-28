@@ -65,6 +65,6 @@ function picUpload (storage, filesize) {
     })
 }
 
-exports.profilePicUpload = picUpload(profilePicStorage, profilePicExpectSize)
+exports.profilePicUpload = picUpload(profilePicStorage, profilePicExpectSize);
 
-exports.shopimgsUpload = picUpload(shopimgsStorage, shopimgsExpectSize)
+exports.shopimgsUpload = picUpload(shopimgsStorage, shopimgsExpectSize);

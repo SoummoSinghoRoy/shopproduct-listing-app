@@ -7,7 +7,7 @@
       <div class="card mt-2 px-2 shadow-sm">
         <div class="card-body">
           <h4 class="card-title text-secondary text-center mt-1">Create a shop</h4>
-          <form action="/shop/createshop" method="post" enctype="multipart/form-data" class="mt-5">
+          <form action="" method="post" enctype="multipart/form-data" class="mt-5">
             <div class="mb-3">
               <label for="shopname" class="form-label">Shop Name</label>
               <input type="text" class="form-control <%= errors.shopname ? 'is-invalid' : '' %>" id="shopname" name="shopname" placeholder="shop name max-length 100 chars">
@@ -19,7 +19,7 @@
             <div class="mb-3">
               <p>Shop Description</p>
               <div class="form-floating">
-                <textarea class="form-control" name="description" id="description" style="height: 140px;"></textarea>
+                <textarea class="form-control" name="description" id="description" style="height: 160px;"></textarea>
                 <label for="description">Description min-length 100 & max-length 500</label>
               </div>
               <span class="text-danger">
@@ -79,8 +79,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="shopimgs" class="form-label">Attach shop pictures (must be select one)</label>
-              <input type="file" class="form-control <%= errors.shopimgs? 'is-invalid' : '' %>" id="shopimgs" name="shopimgs" multiple>
+              <label for="shop_imgs" class="form-label">Attach shop pictures (must be select one)</label>
+              <input type="file" class="form-control <%= errors.shopimgs? 'is-invalid' : '' %>" id="shop_imgs" name="shopimgs" multiple>
               <% if (errors.shopimgs) { %>
                 <p class="text-danger mt-2"><%= errors.shopimgs %></p>
               <% } else{%>
