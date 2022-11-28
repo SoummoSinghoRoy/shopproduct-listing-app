@@ -7,9 +7,10 @@ const {
   createShopPostcontroller
 } = require('../controllers/shopController');
 const {isAuthenticated} = require('../middlewares/authMiddleware');
+const shopValidator = require('../validator/shop/shopValidator');
 
 router.get('/createshop', isAuthenticated, createShopGetController);
-router.post('/createshop', isAuthenticated, shopimgsUpload.array('shopimgs', 3), createShopPostcontroller);
+router.post('/createshop', isAuthenticated, shopimgsUpload.array('shopimgs', 3), shopValidator, createShopPostcontroller);
 
 router.get('/allproducts', isAuthenticated, allProductsGetController);
 

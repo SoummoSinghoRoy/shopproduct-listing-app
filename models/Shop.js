@@ -38,10 +38,6 @@ const ShopSchema = new Schema({
       } 
     }
   ],
-  shopimgs: {
-    type: [String],
-    required: true
-  },
   // shopimgs: [
   //   {
   //     img_1: String,
@@ -65,6 +61,11 @@ const ShopSchema = new Schema({
       },
     }
   ],
+  shopimgs: {
+    type: [String],
+    required: true,
+    maxlength: 3
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'

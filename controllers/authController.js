@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const User = require('../models/User');
+const Shop = require('../models/Shop');
 
 exports.signUpGetController = async (req, res, next) => {
   return res.render('pages/auth/signup.ejs', {
@@ -27,10 +28,9 @@ exports.signUpPostController = async (req, res, next) => {
       let profile = new User({
         email, fullname, mobile_no, 
         password: hashedpassword,
-        profilepic: uploadedProfilepic
+        profilepic: uploadedProfilepic,
       })
       await profile.save()
-
        req.session.isLoggedIn = true
        req.session.userprofile = profile
        req.session.save(err => {
@@ -42,7 +42,6 @@ exports.signUpPostController = async (req, res, next) => {
       return res.redirect('/shop/createshop')
   
     } catch (error) {
-      console.log(error);
       next(error)
     }
   }else {

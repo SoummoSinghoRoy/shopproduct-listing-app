@@ -19,7 +19,7 @@
             <div class="mb-3">
               <p>Shop Description</p>
               <div class="form-floating">
-                <textarea class="form-control" name="description" id="description" style="height: 160px;"></textarea>
+                <textarea class="form-control <%= errors.description ? 'is-invalid' : '' %>" name="description" id="description" style="height: 160px;"></textarea>
                 <label for="description">Description min-length 100 & max-length 500</label>
               </div>
               <span class="text-danger">

@@ -1,6 +1,7 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
-* Task - need to validation create shop page & need to solve multiple shop images db save undefined issue.
-* Task - When shop owner create a shop owner get viewshop/shopprofile page.
+* Task - Need to validate shop imgs from front end. when shop owner create a shop, owner get viewshop/shopprofile page.
+* Task - Need to controll createshop eccess from user if shop available for this owner. etar kaj view shop controller theke korte hobe.
+* Task - Need to create viewshop template, handle route & controller when user create a shop.
 
 
 ### Project Requirements 
@@ -27,6 +28,7 @@
 3. login backend validation done.
 4. Login funcationality done, session + authentication work done.
 5. When user sign up first users session create also user will get create a shop page.
+6. Validation complete for create shop page.
 
 #### What i learned to do this project - 
 
@@ -35,3 +37,4 @@
 3. If need to available nesseccary credentials for views all template of the application we can use res.locals. res.locals make available nesseccary credentials for views all template.   
 4. If we need to store multiple data for one credentials (such as - address) & have multiple input fields for get data then our model schema will be array of object, but we have no multiple field but need to store multiple data then our model schema type will be array/object.
 5. when we work with multiple uploaded file we use req.files for getting uploaded data but work with singular we use req.file.
+6. amra jokhon array theke ber kore kono data store korbo tokhon general varibale e rakha jabe na. kono array ba object e assign korbo.
