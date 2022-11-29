@@ -7,7 +7,7 @@
       <div class="card mt-2 px-2 shadow-sm">
         <div class="card-body">
           <h4 class="card-title text-secondary text-center mt-1">Create a shop</h4>
-          <form action="" method="post" enctype="multipart/form-data" class="mt-5">
+          <form action="/shop/createshop" method="post" enctype="multipart/form-data" class="mt-5">
             <div class="mb-3">
               <label for="shopname" class="form-label">Shop Name</label>
               <input type="text" class="form-control <%= errors.shopname ? 'is-invalid' : '' %>" id="shopname" name="shopname" placeholder="shop name max-length 100 chars">
@@ -96,5 +96,6 @@
   </div>
 </div>
 
+<script src="/scripts/shopImgsValidation.js"></script>
 </body>
 </html>

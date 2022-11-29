@@ -1,4 +1,4 @@
-const {body} = require('express-validator');
+const {body, checkSchema} = require('express-validator');
 
 module.exports = [
   body('shopname')

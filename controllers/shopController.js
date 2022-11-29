@@ -11,59 +11,82 @@ exports.createShopGetController = async (req, res, next) => {
         errors: {}
       })
     }
-    return res.redirect('/shop/viewshop')
+    return res.redirect('/shop')
   } catch (error) {
     next(error)
   }
 }
 
 exports.createShopPostcontroller = async (req, res, next) => {
+
   let {shopname, description, contact_no, street, city, district, country} = req.body
   
-  if(req.files) {
-    let errors = validationResult(req).formatWith(err => err.msg)
+  const shop = await Shop.findOne({user: req.userprofile._id})
 
-    let imgname = []
-    for(let img = 0; img < req.files.length; img++) {
-      imgname.push(req.files[img].filename)
-    }
-    let uploadedShopImgs= []
-    imgname.map(name => {
-      uploadedShopImgs.push( `/uploads/shops/${name}`)
-    })
-
-    if(!errors.isEmpty()) {
-      return res.render('pages/shop/createShop.ejs', {
-        title: 'Create a shop',
-        errors: errors.mapped()
+  if(!shop) {
+    if(req.files) {
+      let errors = validationResult(req).formatWith(err => err.msg)
+  
+      let imgname = []
+      for(let img = 0; img < req.files.length; img++) {
+        imgname.push(req.files[img].filename)
+      }
+      let uploadedShopImgs= []
+      imgname.map(name => {
+        uploadedShopImgs.push( `/uploads/shops/${name}`)
       })
+  
+      if(!errors.isEmpty()) {
+        return res.render('pages/shop/createShop.ejs', {
+          title: 'Create a shop',
+          errors: errors.mapped()
+        })
+      }
+  
+      try {
+        const shop = new Shop({
+          shopname, description, contact_no, street, city, district, country,
+          user: req.userprofile._id,
+          shopimgs: uploadedShopImgs
+        })
+        let userShop =  await shop.save()
+        await User.findOneAndUpdate(
+          {_id: req.userprofile._id},
+          {$set: {shop: userShop._id}}
+        )
+  
+        return res.redirect('/shop')
+  
+      } catch (error) {
+        next(error)
+      }
+    } else{
+      let errors = validationResult(req).formatWith(err => err.msg)
+      if(!errors.isEmpty()) {
+        return res.render('pages/shop/createShop.ejs', {
+          title: 'Create a shop',
+          errors: errors.mapped()
+        })
+      }
     }
+  }else{
+    return res.redirect('/shop')
+  }
+}
 
-    try {
-      const shop = new Shop({
-        shopname, description, contact_no, street, city, district, country,
-        user: req.useruserprofile._id,
-        shopimgs: uploadedShopImgs
+exports.viewShopController = async (req, res, next) => {
+  const shop = await Shop.findOne({user: req.userprofile._id})
+
+  try {
+    if(shop) {
+      return res.render('pages/shop/viewShop.ejs', {
+        title: 'View shop'
       })
-      let userShop =  await shop.save()
-      await User.findOneAndUpdate(
-        {_id: req.userprofile._id},
-        {$set: {shop: userShop._id}}
-      )
-
-      return res.redirect('/shop/viewshop')
-
-    } catch (error) {
-      next(error)
+    }else{
+      return res.redirect('/shop/createshop')
     }
-  } else{
-    let errors = validationResult(req).formatWith(err => err.msg)
-    if(!errors.isEmpty()) {
-      return res.render('pages/shop/createShop.ejs', {
-        title: 'Create a shop',
-        errors: errors.mapped()
-      })
-    }
+  } catch (error) {
+    next(error)
   }
 }
 
