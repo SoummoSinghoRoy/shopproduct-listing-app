@@ -1,10 +1,15 @@
 const authRoute = require('./authRoute');
 const shopRoute = require('./shopRoute');
+const productRoute = require('./productRoute');
 
 const routes = [
   {
     path: '/shop',
     handler: shopRoute
+  },
+  {
+    path: '/product',
+    handler: productRoute
   },
   {
     path: '/auth',

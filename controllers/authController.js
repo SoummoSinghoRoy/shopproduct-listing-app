@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const User = require('../models/User');
-const Shop = require('../models/Shop');
 
 exports.signUpGetController = async (req, res, next) => {
   return res.render('pages/auth/signup.ejs', {

@@ -1,5 +1,6 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
-* Task - Need to design viewshop template.
+* Task - Need to design viewshop template. shop cover photor theke slider better. kintu viewshop template e product category ta niye kaj korbo jkhn product add kora niye kaj hobe.
+* shop edit + profile edit er option rakhte sidebar e
 
 
 ### Project Requirements 
@@ -14,6 +15,7 @@
 9. all neccessery router will be restricted such as - shop create, signup etc.
 10. if a user didn't have a shop this user can't operate other operation such as product add, edit, delete.
 11. all products have 2 different template one for shop owner & other one for general user.
+12. all products page jeta general user er hobe tar product er sathe shop profile link kora thakbe.
 
 ### Unsuccessfull Task
 1. multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. ja ekhono solve korte parini.
@@ -25,7 +27,7 @@
 4. Login funcationality done, session + authentication work done.
 5. When user sign up first users session create also user will get create a shop page.
 6. Backend & frontend validation complete for create shop page.
-7. viewShop functionality done.
+7. viewShop template design done with mix profile info, functionality done, edit shop template & functionality done.
 
 #### What i learned to do this project - 
 

@@ -1,0 +1,88 @@
+<%- include('../../partials/header.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-8">
+      <div class="card mt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-secondary text-center mt-1">Edit Shop</h4>
+          <p class="card-subtitle text-muted my-3"><span class="text-warning fw-bold">Notice: </span>you can't update some necessary fileds</p>
+          <form action="/shop/edit-shop" method="post" class="mt-3">
+            <div class="mb-3">
+              <label for="shopname" class="form-label">Edit shop Name</label>
+              <input type="text" class="form-control <%= errors.shopname ? 'is-invalid' : '' %>" id="shopname" name="shopname" placeholder="shop name max-length 100 chars" value="<%= shop_profile.shopname %>">
+              <span class="text-danger">
+                <%= errors.shopname %> 
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <p>Edit shop Description</p>
+              <div class="form-floating">
+                <textarea class="form-control <%= errors.description ? 'is-invalid' : '' %>" name="description" id="description" style="height: 160px;"><%= shop_profile.description %> </textarea>
+                <label for="description">Description min-length 100 & max-length 500</label>
+              </div>
+              <span class="text-danger">
+                <%= errors.description %> 
+              </span>
+            </div>
+
+            <div class="row">
+              <h5>Shop Address & Contact</h5>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="street" class="form-label">Edit street</label>
+                  <input type="text" class="form-control <%= errors.street ? 'is-invalid' : '' %>" id="street" name="street" value="<%= shop_profile.street %>">
+                  <span class="text-danger">
+                    <%= errors.street %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="city" class="form-label">Edit City</label>
+                  <input type="text" class="form-control <%= errors.city ? 'is-invalid' : '' %>" id="city" name="city" value="<%= shop_profile.city %>">
+                  <span class="text-danger">
+                    <%= errors.city %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="district" class="form-label">Edit District</label>
+                  <input type="text" class="form-control <%= errors.district ? 'is-invalid' : '' %>" id="district" name="district" value="<%= shop_profile.district %>">
+                  <span class="text-danger">
+                    <%= errors.district %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="country" class="form-label">Edit country</label>
+                  <input type="text" class="form-control <%= errors.country ? 'is-invalid' : '' %>" id="country" name="country" value="<%= shop_profile.country %>" disabled>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="contact_no" class="form-label">Edit contact No</label>
+              <input class="form-control <%= errors.contact_no ? 'is-invalid' : '' %>" type="tel" id="contact_no" name="contact_no" value="<%= shop_profile.contact_no %>">
+              <span class="text-danger">
+                <%= errors.contact_no %> 
+              </span>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Update Shop">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

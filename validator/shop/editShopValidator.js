@@ -25,9 +25,5 @@ module.exports = [
 
   body('district')
       .trim()
-      .not().isEmpty().withMessage(`District can't be empty`),
-
-  body('country')
-      .trim()
-      .not().isEmpty().withMessage(`Country can't be empty`)
+      .not().isEmpty().withMessage(`District can't be empty`)
 ]

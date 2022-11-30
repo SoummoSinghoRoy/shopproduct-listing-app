@@ -1,10 +1,43 @@
 <%- include('../../partials/header.ejs') %>
 
 <div class="container">
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-10">
-      <h2>Welcome to shop</h2>
+  <div class="row py-4">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="card mb-3">
+        <h4 class="card-title text-secondary text-center py-3">About Shop</h4>
+         <% let coverimg; %> 
+         <% for( let cover = 0; cover < shop_profile.shopimgs.length; cover++ ) { %>
+          <% coverimg = shop_profile.shopimgs[0] %> 
+         <% } %>
+         <img src="<%= coverimg %> " class="card-img-top px-1"> 
+        <div class="card-body text-secondary">
+          <div class="d-flex">
+            <h4 class="card-title me-auto"><%= shop_profile.shopname %></h4>
+            <a href="/shop/edit-shop" class="btn btn-warning">Edit Shop</a>
+          </div>
+          <p class="card-text"><span class="fw-bold">Mobile:</span>&nbsp;<%= shop_profile.contact_no %></p>
+          <p class="card-text" style="text-align: justify;"><span class="fw-bold">Description:</span>&nbsp;<%= shop_profile.description %></p>
+          <h5 class="text-muted py-2">Address</h5>
+          <p class="card-text"><span class="fw-bold">Street:</span>&nbsp;<%= shop_profile.street %>,&nbsp;<span class="fw-bold">City:</span>&nbsp;<%= shop_profile.city %></p>
+          <p class="card-text"><span class="fw-bold">District:</span>&nbsp;<%= shop_profile.district %>,&nbsp;<span class="fw-bold">Country:</span>&nbsp;<%= shop_profile.country %></p>
+        </div>
+        <div class="card-body">
+          <h5 class="text-muted">Categories</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <h4 class="card-title text-secondary text-center py-3">Shop Owner Profile</h4>
+        <div class="owner-img">
+          <img src="<%= shop_profile.user.profilepic %>" class="card-img-top" width="200" height="200">
+        </div>
+        <div class="card-body text-center">
+          <p class="card-text"><span class="fw-bold">Name:</span>&nbsp;<%= shop_profile.user.fullname %></p>
+          <p class="card-text"><span class="fw-bold">Mobile:</span>&nbsp;<%= shop_profile.user.mobile_no %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

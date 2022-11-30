@@ -76,11 +76,15 @@ exports.createShopPostcontroller = async (req, res, next) => {
 
 exports.viewShopController = async (req, res, next) => {
   const shop = await Shop.findOne({user: req.userprofile._id})
-
+                          .populate({
+                            path: 'user',
+                            select: 'fullname mobile_no profilepic'
+                          })
   try {
     if(shop) {
       return res.render('pages/shop/viewShop.ejs', {
-        title: 'View shop'
+        title: 'View shop',
+        shop_profile: shop
       })
     }else{
       return res.redirect('/shop/createshop')
@@ -90,16 +94,46 @@ exports.viewShopController = async (req, res, next) => {
   }
 }
 
-exports.allProductsGetController = async (req, res, next) => {
-  try {
-    const shop = await Shop.findOne({user: req.userprofile._id})
+exports.editShopGetController = async (req, res, next) => {
+  const shop = await Shop.findOne({user: req.userprofile._id})
 
+  try {
     if(shop) {
-      return res.render('pages/shop/allproductsOwner.ejs', {
-        title: 'All products'
+      return res.render('pages/shop/editShop.ejs',{
+        title: 'Edit shop',
+        errors: {},
+        shop_profile: shop
       })
+    }else{
+      return res.redirect('/shop/createshop')
     }
-    return res.redirect('/shop/createshop')
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.editShopPostController = async (req, res, next) => {
+  let {shopname, description, contact_no, street, city, district} = req.body
+  let errors = validationResult(req).formatWith(err => err.msg)
+
+  if(!errors.isEmpty()) {
+    return res.render('pages/shop/editShop.ejs',{
+      title: 'Edit shop',
+      errors: errors.mapped(),
+      shop_profile: await Shop.findOne({user: req.userprofile._id})
+    })
+  }
+  try {
+    const shop = {
+      shopname, description, contact_no, street, city, district
+    }
+
+    await Shop.findOneAndUpdate(
+      {user: req.userprofile._id},
+      {$set: shop},
+      {new: true}
+    )
+    return res.redirect('/shop')
   } catch (error) {
     next(error)
   }
