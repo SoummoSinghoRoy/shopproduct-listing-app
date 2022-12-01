@@ -18,13 +18,21 @@ const FoodSchema = new Schema ({
     required: true,
     trim: true,
   },
-  manufacturecompany: {
+  expireDate: {
+    type: Date,
+    required: true
+  },
+  manufactureCompany: {
     type: String,
     required: true,
     trim: true,
     maxlength: 100
   },
-  itemimg: String,
+  itemimg: {
+    type: [String],
+    required: true,
+    maxlength: 3
+  },
   shop: {
     type: Schema.Types.ObjectId,
     ref: 'Shop'

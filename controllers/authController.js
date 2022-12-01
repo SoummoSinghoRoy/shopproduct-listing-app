@@ -97,7 +97,7 @@ exports.loginPostController = async (req, res, next) => {
       }
     })
 
-    return res.redirect('/shop/allproducts')
+    return res.redirect('/product/allproducts')
   } catch (error) {
     next(error)
   }

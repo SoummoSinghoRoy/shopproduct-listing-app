@@ -18,13 +18,21 @@ const BeautySchema = new Schema ({
     required: true,
     trim: true,
   },
+  expireDate: {
+    type: Date,
+    required: true
+  },
   manufacturecompany: {
     type: String,
     required: true,
     trim: true,
     maxlength: 100
   },
-  itemimg: String,
+  itemimg: {
+    type: [String],
+    required: true,
+    maxlength: 3
+  },
   shop: {
     type: Schema.Types.ObjectId,
     ref: 'Shop'
