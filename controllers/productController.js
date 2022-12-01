@@ -1,3 +1,6 @@
+const {validationResult} = require('express-validator');
+
+const Food = require('../models/products-categories/Food');
 const Shop = require('../models/Shop');
 
 exports.allProductsGetController = async (req, res, next) => {
@@ -29,4 +32,57 @@ exports.foodProductCreateGetController = async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+}
+
+exports.foodProductCreatePostController = async (req, res, next) => {
+  let {itemname, price, quantity, expireDate, manufactureCompany} = req.body
+
+  if(req.files) {
+    let imgname = []
+    for(let img = 0; img < req.files.length; img++) {
+      imgname.push(req.files[img].filename)
+    }
+    let uploadedProductImgs= []
+    imgname.map(name => {
+      uploadedProductImgs.push( `/uploads/products/${name}`)
+    })
+
+    let errors = validationResult(req).formatWith(err => err.msg)
+    if(!errors.isEmpty()) {
+      return res.render('pages/product/category/food/foodProduct.ejs', {
+        title: 'Add food product item',
+        errors: errors.mapped()
+      })
+    }
+
+    try {
+      let shop = await Shop.findOne({user: req.userprofile._id})
+      let food = new Food({
+        itemname, price, quantity, expireDate, manufactureCompany,
+        itemimg: uploadedProductImgs,
+        shop: shop._id
+      })
+  
+      let addedFood = await food.save()
+      await Shop.findOneAndUpdate(
+        {user: req.userprofile._id},
+        {$push: {productcategories: {'food': addedFood._id}}}
+      )
+
+      return res.redirect('/product/food/:productId')
+
+    } catch (error) {
+      next(error)
+    }
+
+  }else{
+    let errors = validationResult(req).formatWith(err => err.msg)
+    if(!errors.isEmpty()) {
+      return res.render('pages/product/category/food/foodProduct.ejs', {
+        title: 'Add food product item',
+        errors: errors.mapped()
+      })
+    }
+  }
+  
 }

@@ -28,6 +28,7 @@
 5. When user sign up first users session create also user will get create a shop page.
 6. Backend & frontend validation complete for create shop page.
 7. viewShop template design done with mix profile info, functionality done, edit shop template & functionality done.
+8. Food category product add template design done.
 
 #### What i learned to do this project - 
 
@@ -38,3 +39,4 @@
 5. when we work with multiple uploaded file we use req.files for getting uploaded data but work with singular we use req.file.
 6. amra jokhon array theke ber kore kono data store korbo tokhon general varibale e rakha jabe na. kono array ba object e assign korbo.
 7. jokhon ekta model ke ar ekta model er referance hisebe use korbo ebong ekti model er opor refer kora model dependable hobe tokhon je model er opor depend korbe tar kaj korar somoy referance model schema ke update korte hobe.
+8. jokhon ekta model ke ar ekta model er referance hisebe use korbo ebong ekti model er opor refer kora model dependable hobe tokhon je model er opor depend korbe tar kaj korar somoy referance model schema ke update korar somoy jodi reference model er schema ke array of object e assign kora hoi tahole obossyoi db te add korar somoy array'r push method r remove korar joyo pull method use hobe.

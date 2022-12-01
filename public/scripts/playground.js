@@ -4,3 +4,4 @@ shop_imgs.addEventListener('change', function() {
   console.dir(shop_imgs)
   console.log(shop_imgs.files);
 })
+

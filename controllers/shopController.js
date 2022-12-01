@@ -46,8 +46,8 @@ exports.createShopPostcontroller = async (req, res, next) => {
       try {
         const shop = new Shop({
           shopname, description, contact_no, street, city, district, country,
-          user: req.userprofile._id,
-          shopimgs: uploadedShopImgs
+          shopimgs: uploadedShopImgs,
+          user: req.userprofile._id
         })
         let userShop =  await shop.save()
         await User.findOneAndUpdate(

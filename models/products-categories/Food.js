@@ -5,13 +5,11 @@ const FoodSchema = new Schema ({
     type: String,
     required: true,
     trim: true,
-    maxlength: 15
   },
   price: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 15
   },
   quantity: {
     type: Number,
@@ -26,7 +24,6 @@ const FoodSchema = new Schema ({
     type: String,
     required: true,
     trim: true,
-    maxlength: 100
   },
   itemimg: {
     type: [String],
@@ -41,6 +38,6 @@ const FoodSchema = new Schema ({
 { timestamps: true }
 )
 
-const FoodItem = model('FoodItem', FoodSchema)
+const Food = model('FoodItem', FoodSchema)
 
-module.exports = FoodItem
+module.exports = Food

@@ -34,6 +34,9 @@ const profilePicExpectSize = 1024*50
 const shopimgsStorage = picStorage('public/uploads/shops')
 const shopimgsExpectSize = 1024*500
 
+const productimgsStorage = picStorage('public/uploads/products')
+const productimgsExpectSize = 1024*50
+
 function picStorage (uploadLocation) {
   return multer.diskStorage({
           destination: (req, file, cb) => {
@@ -68,3 +71,5 @@ function picUpload (storage, filesize) {
 exports.profilePicUpload = picUpload(profilePicStorage, profilePicExpectSize);
 
 exports.shopimgsUpload = picUpload(shopimgsStorage, shopimgsExpectSize);
+
+exports.productimgsUpload = picUpload(productimgsStorage, productimgsExpectSize);

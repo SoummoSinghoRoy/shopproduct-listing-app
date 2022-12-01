@@ -39,15 +39,19 @@ const ShopSchema = new Schema({
       food: {
         type: Schema.Types.ObjectId,
         ref: 'Food'
-      },
+      }
+    },
+    {
       beauty: {
         type: Schema.Types.ObjectId,
         ref: 'Beauty'
-      },
+      }
+    },
+    {
       medicine: {
         type: Schema.Types.ObjectId,
         ref: 'Medicine'
-      },
+      }
     }
   ],
   shopimgs: {
