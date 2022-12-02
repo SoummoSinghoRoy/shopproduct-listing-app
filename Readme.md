@@ -1,7 +1,8 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task - Viewshop template e product category ta niye kaj korbo jkhn product add kora niye kaj hobe.
 * shop edit + profile edit er option rakhte hobe sidebar e.
-* Need to do create single product page + food product img add front end validation.
+* Need to do create existing food product edit page.
+* Need to do create 404 & 500 page.
 
 
 ### Project Requirements 

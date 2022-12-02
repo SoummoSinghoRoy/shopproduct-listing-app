@@ -36,7 +36,6 @@ exports.foodProductCreateGetController = async (req, res, next) => {
 
 exports.foodProductCreatePostController = async (req, res, next) => {
   let {itemname, price, quantity, expireDate, manufactureCompany} = req.body
-
   if(req.files) {
     let imgname = []
     for(let img = 0; img < req.files.length; img++) {
@@ -69,7 +68,7 @@ exports.foodProductCreatePostController = async (req, res, next) => {
         {$push: {'food': addedFood._id}}
       )
 
-      return res.redirect('/product/food/:productId')
+      return res.redirect(`/product/food/${addedFood._id}`)
 
     } catch (error) {
       next(error)
@@ -85,4 +84,26 @@ exports.foodProductCreatePostController = async (req, res, next) => {
     }
   }
   
+}
+
+exports.singleFoodProductGetController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleFood = await Food.findOne({shop: shop._id, _id: productId})
+
+    if(singleFood) {
+      return res.render('pages/product/category/food/singleFood.ejs', {
+        title: `${singleFood.itemname}`,
+        singlefood: singleFood 
+      })
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
+  } catch (error) {
+    next(error)
+  }
 }
