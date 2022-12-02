@@ -34,24 +34,22 @@ const ShopSchema = new Schema({
     type: String,
     required: true
   },
-  productcategories: [
+  food: [
     {
-      food: {
-        type: Schema.Types.ObjectId,
-        ref: 'Food'
-      }
-    },
+      type: Schema.Types.ObjectId,
+      ref: 'Food'
+    }
+  ],
+  beauty: [
     {
-      beauty: {
-        type: Schema.Types.ObjectId,
-        ref: 'Beauty'
-      }
-    },
+      type: Schema.Types.ObjectId,
+      ref: 'Beauty'
+    }
+  ],
+  medicine: [
     {
-      medicine: {
-        type: Schema.Types.ObjectId,
-        ref: 'Medicine'
-      }
+      type: Schema.Types.ObjectId,
+      ref: 'Medicine'
     }
   ],
   shopimgs: {

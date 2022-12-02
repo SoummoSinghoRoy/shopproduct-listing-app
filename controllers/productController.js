@@ -66,7 +66,7 @@ exports.foodProductCreatePostController = async (req, res, next) => {
       let addedFood = await food.save()
       await Shop.findOneAndUpdate(
         {user: req.userprofile._id},
-        {$push: {productcategories: {'food': addedFood._id}}}
+        {$push: {'food': addedFood._id}}
       )
 
       return res.redirect('/product/food/:productId')

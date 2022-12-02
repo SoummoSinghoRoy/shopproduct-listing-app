@@ -1,7 +1,7 @@
 window.onload = function() {
-  let shop_imgs = document.getElementById('shop_imgs');
+  let itemimg = document.getElementById('itemimg');
 
-  shop_imgs.addEventListener('change', function() {
+  itemimg.addEventListener('change', function() {
     let imgsFile = this.files
     let uploadedImgs = []
     for (let img = 0; img < imgsFile.length; img++) {
@@ -12,9 +12,9 @@ window.onload = function() {
         let reader = new FileReader()
         reader.onload = function (event) {
           let uplodedpicsSize = imgfile.size
-          const expectedsize = 1024 * 500
+          const expectedsize = 1024 * 50
           if(uplodedpicsSize > expectedsize) {
-            warning.innerHTML = `Shop images must be less then 500kb & resulation 200px * 200px`
+            warning.innerHTML = `Product images must be less then 50kb & resulation 150px * 100px`
             warning.className = 'text-danger mt-2'
             shop_imgs.value = ''
           }else{
