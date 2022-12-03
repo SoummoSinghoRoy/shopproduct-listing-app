@@ -1,12 +1,12 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task - Viewshop template e product category ta niye kaj korbo jkhn product add kora niye kaj hobe.
 * shop edit + profile edit er option rakhte hobe sidebar e.
-* Need to do create existing food product edit page.
+* Need to do work delete product functionality, also try to complete shop + user delete functionality.
 * Need to do create 404 & 500 page.
 
 
 ### Project Requirements 
-1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search
+1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
 2. navigation(after creation shop owner profile) - all products(for shop owner), log out & include search 
 3. sidebar nav(after creation shop owner profile/ authenticated owner profile) - all products(for shop owner), category wise product add + view products (with dropdown), Shops(with dropdown) view shop & edit shop, edit owner profile, log out
 4. edit product button will keep internally view single product page. but edit functionality wiil be appeared for authenticated profile. 
@@ -42,3 +42,5 @@
 6. amra jokhon array theke ber kore kono data store korbo tokhon general varibale e rakha jabe na. kono array ba object e assign korbo.
 7. jokhon ekta model ke ar ekta model er referance hisebe use korbo ebong ekti model er opor refer kora model dependable hobe tokhon je model er opor depend korbe tar kaj korar somoy referance model schema ke update korte hobe.
 8. jokhon ekta model ke ar ekta model er referance hisebe use korbo ebong ekti model er opor refer kora model dependable hobe tokhon je model er opor depend korbe tar kaj korar somoy referance model schema ke update korar somoy jodi reference model er schema ke array of object e assign kora hoi tahole obossyoi db te add korar somoy array'r push method r remove korar joyo pull method use hobe.
+9. jokhon db model ke notun data diye update kora hobe tokhon update er somoy bole dite hobe je sob kichu new ja. new ekta property value hobe true. (eti mongoose er khetre).
+10. amra jokhon form e enctype = multipart/formdata use korbo tokhon route er sathe must middleware use hobe na hole data req body theke paoya jabe na. tai file baad e form e kaj korle enctype na define kora vlo r jodi kori tahole file handle korar je middleware ache tar documentation follow kore file baad e kaj korar je instruction dibe seti follow korbo.

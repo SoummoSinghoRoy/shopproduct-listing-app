@@ -107,3 +107,57 @@ exports.singleFoodProductGetController = async (req, res, next) => {
     next(error)
   }
 }
+
+exports.foodProductEditGetController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleFood = await Food.findOne({shop: shop._id, _id: productId})
+
+    if(singleFood) {
+      return res.render('pages/product/category/food/editFoodProduct.ejs', {
+        title: 'Edit product',
+        singlefood: singleFood,
+        errors: {} 
+      })
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
+
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.foodProductEditPostController = async (req, res, next) => {
+  let {itemname, price, quantity, expireDate, manufactureCompany} = req.body
+  let { productId } = req.params
+
+  const shop = await Shop.findOne({user: req.userprofile._id})
+  const singleFood = await Food.findOne({shop: shop._id, _id: productId})
+
+  let errors = validationResult(req).formatWith(err => err.msg)
+  if(!errors.isEmpty()) {
+    return res.render('pages/product/category/food/editFoodProduct.ejs', {
+      title: 'Edit product',
+      singlefood: singleFood,
+      errors: errors.mapped()
+    })
+  }
+
+  try {
+    let updateFood = { itemname, price, quantity, expireDate, manufactureCompany } 
+    await Food.findByIdAndUpdate(
+      {_id: singleFood._id},
+      {$set: updateFood},
+      {new: true}
+    )
+    return res.redirect(`/product/food/${singleFood._id}`)
+
+  } catch (error) {
+    next(error)
+  }
+}
