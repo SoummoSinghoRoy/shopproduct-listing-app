@@ -6,7 +6,8 @@ const {
   createShopPostcontroller,
   viewShopController,
   editShopGetController,
-  editShopPostController
+  editShopPostController,
+  deleteShopController
 } = require('../controllers/shopController');
 const {isAuthenticated} = require('../middlewares/authMiddleware');
 const shopValidator = require('../validator/shop/shopValidator');
@@ -19,5 +20,6 @@ router.get('/', isAuthenticated, viewShopController);
 
 router.get('/edit-shop', isAuthenticated, editShopGetController);
 router.post('/edit-shop', isAuthenticated, editShopValidator, editShopPostController);
+router.get('/delete', isAuthenticated, deleteShopController);
 
 module.exports = router

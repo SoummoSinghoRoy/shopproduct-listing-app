@@ -1,3 +1,4 @@
+const fs = require('fs');
 const {validationResult} = require('express-validator');
 
 const Food = require('../models/products-categories/Food');
@@ -157,6 +158,37 @@ exports.foodProductEditPostController = async (req, res, next) => {
     )
     return res.redirect(`/product/food/${singleFood._id}`)
 
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.foodproductDeleteController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleFood = await Food.findOne({shop: shop._id, _id: productId})
+
+    if(singleFood) {
+      await Food.findOneAndDelete({_id: productId})
+      singleFood.itemimg.map(img => {
+        fs.unlink(`public${img}`, err => {
+          if(err) {
+            throw err
+          }
+        })
+      })
+      await Shop.findOneAndUpdate(
+        {user: req.userprofile._id},
+        {$pull: {'food': singleFood._id}}
+      )
+      return res.redirect('/product/food/add-product') // apatoto add-product e nibe kintu pore food category product page e nibe.
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
   } catch (error) {
     next(error)
   }

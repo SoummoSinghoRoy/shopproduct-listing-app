@@ -1,4 +1,7 @@
+const fs = require('fs');
 const { validationResult } = require('express-validator');
+
+const Food = require('../models/products-categories/Food');
 const Shop = require('../models/Shop');
 const User = require('../models/User');
 
@@ -134,6 +137,44 @@ exports.editShopPostController = async (req, res, next) => {
       {new: true}
     )
     return res.redirect('/shop')
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.deleteShopController = async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const foods = await Food.find({shop: shop._id})
+    if(shop) {
+      await Shop.deleteOne({_id: shop._id})
+      shop.shopimgs.map(img => {
+        fs.unlink(`public${img}`, err => {
+          if(err) {
+            throw err
+          }
+        })
+      })
+      await Food.deleteMany({foods});
+      foods.map(food => {
+        food.itemimg.map(img => {
+          fs.unlink(`public${img}`, err => {
+            if(err) {
+              throw err
+            }
+          })
+        })
+      })
+      await User.findOneAndUpdate(
+        {_id: req.userprofile._id},
+        {$unset: {'shop': ""}}
+      )
+      return res.redirect('/shop/createshop')
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
   } catch (error) {
     next(error)
   }

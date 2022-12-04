@@ -16,6 +16,10 @@
             </div>
           </div>
           <div class="col-md-4">
+            <div class="product-action-btn my-3">
+              <a href="/product/food/edit-product/<%= singlefood._id %>" role="button" class="card-link btn btn-warning">Edit product</a>
+              <a href="/product/food/delete/<%= singlefood._id %>" role="button" class="card-link btn btn-danger">Delete now</a>
+            </div>
             <% let productImg; %> 
             <% for( let product = 0; product < singlefood.itemimg.length; product++ ) { %>
              <% productImg = singlefood.itemimg[0] %> 
