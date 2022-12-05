@@ -183,11 +183,28 @@ exports.foodproductDeleteController = async (req, res, next) => {
         {user: req.userprofile._id},
         {$pull: {'food': singleFood._id}}
       )
-      return res.redirect('/product/food/add-product') // apatoto add-product e nibe kintu pore food category product page e nibe.
+      return res.redirect('/product/food')
     }else{
       let error = new Error('404 not found')
       error.status = 404
       throw error
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.allFoodCategoryProductsGetController = async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const foods = await Food.find({shop: shop._id})
+    if(foods.length === 0) {
+      return res.redirect('/product/food/add-product')
+    }else{
+      return res.render('pages/product/category/food/allFoods.ejs', {
+        title: 'All foods products',
+        foods
+      })
     }
   } catch (error) {
     next(error)

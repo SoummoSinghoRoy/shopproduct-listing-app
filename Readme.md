@@ -1,9 +1,8 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task - Viewshop template e product category ta niye kaj korbo jkhn product add kora niye kaj hobe.
 * Task - shop edit + profile edit er option rakhte hobe sidebar e.
-* Task - Need to do work user delete functionality.
-* Task - jokhon ekta product delete korbe tokhon delete er por je category theke product delete korlo sei category'r all product page e redirect korbe. r jkhn kono product thakbey na tkhn add-product page e nibe.
 * Task - Need to do create 404 & 500 page.
+* Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
 
 
 ### Project Requirements 
@@ -32,8 +31,10 @@
 6. Backend & frontend validation complete for create shop page.
 7. viewShop template design done with mix profile info, functionality done, edit shop template & functionality done.
 8. Food category product add template design, functionality, validation done.
-9. Food category product delete functionality done.
-9. Shop delete functionality done.
+9. Food category product delete functionality done. when a shop owner delete single by single all product owner back respond to add a product page. it's functionality done.
+10. Shop delete functionality done.
+11. User delete functionality done.
+12. food category all products template/page done.
 
 #### What i learned to do this project - 
 
@@ -47,4 +48,4 @@
 8. jokhon ekta model ke ar ekta model er referance hisebe use korbo ebong ekti model er opor refer kora model dependable hobe tokhon je model er opor depend korbe tar kaj korar somoy referance model schema ke update korar somoy jodi reference model er schema ke array of object e assign kora hoi tahole obossyoi db te add korar somoy array'r push method r remove korar joyo pull method use hobe.
 9. jokhon db model ke notun data diye update kora hobe tokhon update er somoy bole dite hobe je sob kichu new ja. new ekta property value hobe true. (eti mongoose er khetre).
 10. amra jokhon form e enctype = multipart/formdata use korbo tokhon route er sathe must middleware use hobe na hole data req body theke paoya jabe na. tai file baad e form e kaj korle enctype na define kora vlo r jodi kori tahole file handle korar je middleware ache tar documentation follow kore file baad e kaj korar je instruction dibe seti follow korbo.
-11. jkhn kono data delete korar por onyo kothao response redicrect korbo tokhon delete routing hobe get method e but kono redirection hobe na just data ta remove hobe tokhon delete method use korbo.
+11. jkhn kono data delete korar por onyo kothao response redirect korbo tokhon delete routing hobe get method e but kono redirection hobe na just data ta remove hobe tokhon delete method use korbo jemon - data table theke data delete kora.

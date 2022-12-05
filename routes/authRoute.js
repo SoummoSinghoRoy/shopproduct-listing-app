@@ -8,7 +8,8 @@ const {
   signUpPostController,
   logInGetController,
   loginPostController,
-  logOutController
+  logOutController,
+  ownerProfileDeleteController
 } = require('../controllers/authController');
 const {isAuthenticated, isUnAuthenticated} = require('../middlewares/authMiddleware');
 
@@ -19,5 +20,7 @@ router.get('/login', isUnAuthenticated, logInGetController);
 router.post('/login', isUnAuthenticated, loginValidator, loginPostController);
 
 router.get('/logout', isAuthenticated, logOutController);
+
+router.get('/delete', isAuthenticated, ownerProfileDeleteController);
 
 module.exports = router;
