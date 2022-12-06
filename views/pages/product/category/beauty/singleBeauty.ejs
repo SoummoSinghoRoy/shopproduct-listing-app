@@ -1,0 +1,45 @@
+<%- include('../../../../partials/header.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-8">
+      <div class="card mb-3 mt-2 px-2 shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= singlebeauty.itemname %></h5>
+              <p class="mt-3 mb-0"><span class="fw-bold">Price:</span>&nbsp;<%= singlebeauty.price %> Tk.</p>
+              <p class="mt-2 mb-0"><span class="fw-bold">Quantity:</span>&nbsp;<%= singlebeauty.quantity %></p>
+              <p class="mt-2 mb-0"><span class="fw-bold">Expire Date:</span>&nbsp;<%= singlebeauty.expireDate %></p>
+              <p class="mt-2 mb-0"><span class="fw-bold">Manufacture Company:</span>&nbsp;<%= singlebeauty.manufactureCompany %></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="product-action-btn my-3">
+              <a href="/product/beauty/edit-product/<%= singlebeauty._id %>" role="button" class="card-link btn btn-warning">Edit product</a>
+              <a href="/product/beauty/delete/<%= singlebeauty._id %>" role="button" class="card-link btn btn-danger">Delete now</a>
+            </div>
+            <% let productImg; %> 
+            <% for( let product = 0; product < singlebeauty.itemimg.length; product++ ) { %>
+             <% productImg = singlebeauty.itemimg[0] %> 
+            <% } %>
+            <img src="<%= productImg %> " class="img-fluid rounded-start mt-5" style="width: 200px; height: auto">
+          </div>
+          <div class="col-12">
+            <div class="card-body">
+              <h5>See the product more angel</h5>
+              <% singlebeauty.itemimg.forEach(item => { %>
+                <img src="<%= item %> " class="img-fluid" style= "width: 200px; height: auto">
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/scripts/productimgValidation.js"></script>
+</body>
+</html>

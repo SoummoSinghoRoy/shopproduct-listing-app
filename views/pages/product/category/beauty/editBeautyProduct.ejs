@@ -9,10 +9,10 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Edit product</h5>
-              <form action="/product/food/edit-product/<%= singlefood._id %> " method="post" class="mt-5">
+              <form action="/product/beauty/edit-product/<%= singlebeauty._id %> " method="post" class="mt-5">
                 <div class="mb-3">
                   <label for="itemname" class="form-label">Product Name</label>
-                  <input type="text" class="form-control <%= errors.itemname ? 'is-invalid' : '' %>" id="itemname" name="itemname" value="<%= singlefood.itemname %>">
+                  <input type="text" class="form-control <%= errors.itemname ? 'is-invalid' : '' %>" id="itemname" name="itemname" value="<%= singlebeauty.itemname %>">
                   <span class="text-danger">
                     <%= errors.itemname %> 
                   </span>
@@ -22,7 +22,7 @@
                   <div class="col">
                     <div class="mb-3">
                       <label for="price" class="form-label">Price</label>
-                      <input type="text" class="form-control <%= errors.price ? 'is-invalid' : '' %>" id="price" name="price" value="<%= singlefood.price %>">
+                      <input type="text" class="form-control <%= errors.price ? 'is-invalid' : '' %>" id="price" name="price" value="<%= singlebeauty.price %>">
                       <span class="text-danger">
                         <%= errors.price %> 
                       </span>
@@ -31,7 +31,7 @@
                   <div class="col">
                     <div class="mb-3">
                       <label for="quantity" class="form-label">Quantity</label>
-                      <input type="number" class="form-control <%= errors.quantity ? 'is-invalid' : '' %>" id="quantity" name="quantity" value="<%= singlefood.quantity %>">
+                      <input type="number" class="form-control <%= errors.quantity ? 'is-invalid' : '' %>" id="quantity" name="quantity" value="<%= singlebeauty.quantity %>">
                       <span class="text-danger">
                         <%= errors.quantity %> 
                       </span>
@@ -43,7 +43,7 @@
                   <div class="col">
                     <div class="mb-3">
                       <label for="expireDate" class="form-label">Expire Date</label>
-                      <input type="date" class="form-control <%= errors.expireDate ? 'is-invalid' : '' %>" id="expireDate" name="expireDate" value="<%= singlefood.expireDate %>">
+                      <input type="date" class="form-control <%= errors.expireDate ? 'is-invalid' : '' %>" id="expireDate" name="expireDate" value="<%= singlebeauty.expireDate %>">
                       <span class="text-danger">
                         <%= errors.expireDate %> 
                       </span>
@@ -52,7 +52,7 @@
                   <div class="col">
                     <div class="mb-3">
                       <label for="manufactureCompany" class="form-label">ManufactureCompany</label>
-                      <input type="text" class="form-control <%= errors.manufactureCompany ? 'is-invalid' : '' %>" id="manufactureCompany" name="manufactureCompany" value="<%= singlefood.manufactureCompany %>">
+                      <input type="text" class="form-control <%= errors.manufactureCompany ? 'is-invalid' : '' %>" id="manufactureCompany" name="manufactureCompany" value="<%= singlebeauty.manufactureCompany %>">
                       <span class="text-danger">
                         <%= errors.manufactureCompany %> 
                       </span>
@@ -66,8 +66,8 @@
           </div>
           <div class="col-md-4">
             <% let productImg; %> 
-            <% for( let product = 0; product < singlefood.itemimg.length; product++ ) { %>
-             <% productImg = singlefood.itemimg[0] %> 
+            <% for( let product = 0; product < singlebeauty.itemimg.length; product++ ) { %>
+             <% productImg = singlebeauty.itemimg[0] %> 
             <% } %>
             <img src="<%= productImg %> " class="img-fluid rounded-start mt-5" style="width: 200px; height: auto">
           </div>
@@ -75,7 +75,7 @@
         <div class="row">
           <div class="col-12">
             <h5>See the product more angel</h5>
-            <% singlefood.itemimg.forEach(item => { %>
+            <% singlebeauty.itemimg.forEach(item => { %>
               <img src="<%= item %> " class="img-fluid" style= "width: 200px; height: auto">
             <% }) %>
           </div>

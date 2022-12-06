@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 const Food = require('../models/products-categories/Food');
 const Shop = require('../models/Shop');
 const User = require('../models/User');
+const Beauty = require('../models/products-categories/Beauty');
 
 exports.createShopGetController = async (req, res, next) => {
   try {
@@ -146,6 +147,7 @@ exports.deleteShopController = async (req, res, next) => {
   try {
     const shop = await Shop.findOne({user: req.userprofile._id})
     const foods = await Food.find({shop: shop._id})
+    const beauties = await Beauty.find({shop: shop._id})
     if(shop) {
       await Shop.deleteOne({_id: shop._id})
       shop.shopimgs.map(img => {
@@ -155,6 +157,7 @@ exports.deleteShopController = async (req, res, next) => {
           }
         })
       })
+
       await Food.deleteMany({foods});
       foods.map(food => {
         food.itemimg.map(img => {
@@ -165,6 +168,18 @@ exports.deleteShopController = async (req, res, next) => {
           })
         })
       })
+
+      await Beauty.deleteMany({beauties});
+      beauties.map(beauty => {
+        beauty.itemimg.map(img => {
+          fs.unlink(`public${img}`, err => {
+            if(err) {
+              throw err
+            }
+          })
+        })
+      })
+
       await User.findOneAndUpdate(
         {_id: req.userprofile._id},
         {$unset: {'shop': ""}}

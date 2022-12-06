@@ -120,6 +120,7 @@ exports.ownerProfileDeleteController = async (req, res, next) => {
     const userprofile = await User.findOne({_id: req.userprofile._id})
     const shop = await Shop.findOne({user: req.userprofile._id})
     const foods = await Food.find({shop: shop._id})
+    const beautyProducts = await Beauty.find({shop: shop._id})
 
     if(userprofile) {
       await User.deleteOne({_id: req.userprofile._id})
@@ -142,6 +143,19 @@ exports.ownerProfileDeleteController = async (req, res, next) => {
         await Food.deleteMany({foods})
         foods.map(food => {
           food.itemimg.map(img => {
+            fs.unlink(`public${img}`, err => {
+              if(err) {
+                throw err
+              }
+            })
+          })
+        })
+      }
+
+      if(beautyProducts.length !== 0) {
+        await beautyProducts.deleteMany({foods})
+        beautyProducts.map(beautyProduct => {
+          beautyProduct.itemimg.map(img => {
             fs.unlink(`public${img}`, err => {
               if(err) {
                 throw err

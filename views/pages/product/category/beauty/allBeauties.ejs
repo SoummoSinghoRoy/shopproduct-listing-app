@@ -6,22 +6,22 @@
     <div class="col-8">
       <div class="card">
         <div class="card-body">
-          <h4 class="text-center text-secondary">All food products</h4>
+          <h4 class="text-center text-secondary">All beauty products</h4>
         </div>
         <div class="card-body">
           <div class="row">
-            <% foods.forEach(food => { %>
+            <% beautyProducts.forEach(beautyProduct => { %>
               <div class="col-4">
                 <div class="card">
                   <% let productThumnail; %> 
-                  <% for( let thumbnail = 0; thumbnail < food.itemimg.length; thumbnail++ ) { %>
-                    <% productThumnail = food.itemimg[0] %> 
+                  <% for( let thumbnail = 0; thumbnail < beautyProduct.itemimg.length; thumbnail++ ) { %>
+                    <% productThumnail = beautyProduct.itemimg[0] %> 
                   <% } %>
                   <img src="<%= productThumnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
                   <div class="card-body">
-                    <h5 class="card-title"><%= food.itemname %></h5>
-                    <p><span>Price:</span>&nbsp;<%= food.price %>&nbsp;Tk.</p>
-                    <a href="/product/food/<%= food._id %>" class="card-link">view details</a>
+                    <h5 class="card-title"><%= beautyProduct.itemname %></h5>
+                    <p><span>Price:</span>&nbsp;<%= beautyProduct.price %>&nbsp;Tk.</p>
+                    <a href="/product/beauty/<%= beautyProduct._id %>" class="card-link">view details</a>
                   </div>
                 </div>
               </div>

@@ -5,13 +5,13 @@ const BeautySchema = new Schema ({
     type: String,
     required: true,
     trim: true,
-    maxlength: 15
+    maxlength: 50
   },
   price: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 15
+    maxlength: 20
   },
   quantity: {
     type: Number,
@@ -22,7 +22,7 @@ const BeautySchema = new Schema ({
     type: Date,
     required: true
   },
-  manufacturecompany: {
+  manufactureCompany: {
     type: String,
     required: true,
     trim: true,
