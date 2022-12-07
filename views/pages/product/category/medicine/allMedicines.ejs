@@ -1,0 +1,37 @@
+<%- include('../../../../partials/header.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-center text-secondary">All beauty products</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <% medicineProducts.forEach(medicineProducts => { %>
+              <div class="col-4">
+                <div class="card">
+                  <% let productThumnail; %> 
+                  <% for( let thumbnail = 0; thumbnail < medicineProducts.itemimg.length; thumbnail++ ) { %>
+                    <% productThumnail = medicineProducts.itemimg[0] %> 
+                  <% } %>
+                  <img src="<%= productThumnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= medicineProducts.itemname %></h5>
+                    <p><span>Price:</span>&nbsp;<%= medicineProducts.price %>&nbsp;Tk.</p>
+                    <a href="/product/medicine/<%= medicineProducts._id %>" class="card-link">view details</a>
+                  </div>
+                </div>
+              </div>
+             <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const {validationResult} = require('express-validator');
 
-const Food = require('../models/products-categories/Food');
 const Shop = require('../models/Shop');
+const Food = require('../models/products-categories/Food');
 const Beauty = require('../models/products-categories/Beauty');
+const Medicine = require('../models/products-categories/Medicine');
 
 exports.allProductsGetController = async (req, res, next) => {
   try {
@@ -355,7 +356,7 @@ exports.beautyProductEditPostController = async (req, res, next) => {
   }
 }
 
-exports.beautyproductDeleteController = async (req, res, next) => {
+exports.beautyProductDeleteController = async (req, res, next) => {
   let { productId } = req.params
 
   try {
@@ -364,6 +365,12 @@ exports.beautyproductDeleteController = async (req, res, next) => {
 
     if(singleBeauty) {
       await Beauty.findOneAndDelete({_id: productId})
+      
+      await Shop.findOneAndUpdate(
+        {user: req.userprofile._id},
+        {$pull: {'beauty': singleBeauty._id}}
+      )
+
       singleBeauty.itemimg.map(img => {
         fs.unlink(`public${img}`, err => {
           if(err) {
@@ -371,10 +378,6 @@ exports.beautyproductDeleteController = async (req, res, next) => {
           }
         })
       })
-      await Shop.findOneAndUpdate(
-        {user: req.userprofile._id},
-        {$pull: {'beauty': singleBeauty._id}}
-      )
       return res.redirect('/product/beauty')
     }else{
       let error = new Error('404 not found')
@@ -396,6 +399,197 @@ exports.allBeautyCategoryProductsGetController = async (req, res, next) => {
       return res.render('pages/product/category/beauty/allBeauties.ejs', {
         title: 'All Beauty products',
         beautyProducts
+      })
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.medicineProductCreateGetController = async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+
+    if(shop) {
+      return res.render('pages/product/category/medicine/medicineProduct.ejs', {
+        title: 'Add medicine product item',
+        errors: {}
+      })
+    }
+    return res.redirect('/shop/createshop')
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.medicineProductCreatePostController = async (req, res, next) => {
+  let {itemname, price, quantity, expireDate, manufactureCompany} = req.body
+  if(req.files) {
+    let imgname = []
+    for(let img = 0; img < req.files.length; img++) {
+      imgname.push(req.files[img].filename)
+    }
+    let uploadedProductImgs= []
+    imgname.map(name => {
+      uploadedProductImgs.push( `/uploads/products/${name}`)
+    })
+
+    let errors = validationResult(req).formatWith(err => err.msg)
+    if(!errors.isEmpty()) {
+      return res.render('pages/product/category/medicine/medicineProduct.ejs', {
+        title: 'Add medicine product item',
+        errors: errors.mapped()
+      })
+    }
+
+    try {
+      let shop = await Shop.findOne({user: req.userprofile._id})
+      let medicine = new Medicine({
+        itemname, price, quantity, expireDate, manufactureCompany,
+        itemimg: uploadedProductImgs,
+        shop: shop._id
+      })
+  
+      let addedMedicine = await medicine.save()
+      await Shop.findOneAndUpdate(
+        {user: req.userprofile._id},
+        {$push: {'medicine': addedMedicine._id}}
+      )
+
+      return res.redirect(`/product/medicine/${addedMedicine._id}`)
+
+    } catch (error) {
+      next(error)
+    }
+
+  }else{
+    let errors = validationResult(req).formatWith(err => err.msg)
+    if(!errors.isEmpty()) {
+      return res.render('pages/product/category/medicine/medicineProduct.ejs', {
+        title: 'Add medicine product item',
+        errors: errors.mapped()
+      })
+    }
+  }
+}
+
+exports.singleMedicineProductGetController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleMedicine = await Medicine.findOne({shop: shop._id, _id: productId})
+
+    if(singleMedicine) {
+      return res.render('pages/product/category/medicine/singleMedicine.ejs', {
+        title: `${singleMedicine.itemname}`,
+        singlemedicine: singleMedicine 
+      })
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.medicineProductEditGetController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleMedicine = await Medicine.findOne({shop: shop._id, _id: productId})
+
+    if(singleMedicine) {
+      return res.render('pages/product/category/medicine/editMedicineProduct.ejs', {
+        title: 'Edit product',
+        singlemedicine: singleMedicine,
+        errors: {} 
+      })
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
+
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.medicineProductEditPostController = async (req, res, next) => {
+  let {itemname, price, quantity, expireDate, manufactureCompany} = req.body
+  let { productId } = req.params
+
+  const shop = await Shop.findOne({user: req.userprofile._id})
+  const singleMedicine = await Medicine.findOne({shop: shop._id, _id: productId})
+
+  let errors = validationResult(req).formatWith(err => err.msg)
+  if(!errors.isEmpty()) {
+    return res.render('pages/product/category/medicine/editMedicineProduct.ejs', {
+      title: 'Edit product',
+      singlemedicine: singleMedicine,
+      errors: errors.mapped()
+    })
+  }
+
+  try {
+    let updateMedicine = { itemname, price, quantity, expireDate, manufactureCompany } 
+    await Medicine.findByIdAndUpdate(
+      {_id: singleMedicine._id},
+      {$set: updateMedicine},
+      {new: true}
+    )
+    return res.redirect(`/product/medicine/${singleMedicine._id}`)
+
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.medicineproductDeleteController = async (req, res, next) => {
+  let { productId } = req.params
+
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const singleMedicine = await Medicine.findOne({shop: shop._id, _id: productId})
+
+    if(singleMedicine) {
+      await Medicine.findOneAndDelete({_id: productId})
+      singleMedicine.itemimg.map(img => {
+        fs.unlink(`public${img}`, err => {
+          if(err) {
+            throw err
+          }
+        })
+      })
+      await Shop.findOneAndUpdate(
+        {user: req.userprofile._id},
+        {$pull: {'medicine': singleMedicine._id}}
+      )
+      return res.redirect('/product/medicine')
+    }else{
+      let error = new Error('404 not found')
+      error.status = 404
+      throw error
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.allMedicineCategoryProductsGetController = async (req, res, next) => {
+  try {
+    const shop = await Shop.findOne({user: req.userprofile._id})
+    const medicineProducts = await Medicine.find({shop: shop._id})
+    if(medicineProducts.length === 0) {
+      return res.redirect('/product/medicine/add-product')
+    }else{
+      return res.render('pages/product/category/medicine/allMedicines.ejs', {
+        title: 'All medicines products',
+        medicineProducts
       })
     }
   } catch (error) {

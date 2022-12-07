@@ -1,10 +1,11 @@
 const fs = require('fs');
 const { validationResult } = require('express-validator');
 
-const Food = require('../models/products-categories/Food');
-const Shop = require('../models/Shop');
 const User = require('../models/User');
+const Shop = require('../models/Shop');
 const Beauty = require('../models/products-categories/Beauty');
+const Food = require('../models/products-categories/Food');
+const Medicine = require('../models/products-categories/Medicine');
 
 exports.createShopGetController = async (req, res, next) => {
   try {
@@ -148,6 +149,8 @@ exports.deleteShopController = async (req, res, next) => {
     const shop = await Shop.findOne({user: req.userprofile._id})
     const foods = await Food.find({shop: shop._id})
     const beauties = await Beauty.find({shop: shop._id})
+    const medicines = await Medicine.find({shop: shop._id})
+
     if(shop) {
       await Shop.deleteOne({_id: shop._id})
       shop.shopimgs.map(img => {
@@ -172,6 +175,17 @@ exports.deleteShopController = async (req, res, next) => {
       await Beauty.deleteMany({beauties});
       beauties.map(beauty => {
         beauty.itemimg.map(img => {
+          fs.unlink(`public${img}`, err => {
+            if(err) {
+              throw err
+            }
+          })
+        })
+      })
+
+      await Medicine.deleteMany({medicines});
+      medicines.map(medicine => {
+        medicine.itemimg.map(img => {
           fs.unlink(`public${img}`, err => {
             if(err) {
               throw err

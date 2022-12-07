@@ -2,7 +2,8 @@ const router = require('express').Router();
 
 const {productimgsUpload} = require('../middlewares/uploadMiddleware');
 const {isAuthenticated, isUnAuthenticated} = require('../middlewares/authMiddleware');
-const {allProductsGetController, 
+const {
+      allProductsGetController, 
       foodProductCreateGetController, 
       foodProductCreatePostController,
       singleFoodProductGetController,
@@ -15,8 +16,15 @@ const {allProductsGetController,
       singlebeautyProductGetController,
       beautyProductEditGetController,
       beautyProductEditPostController,
-      beautyproductDeleteController,
-      allBeautyCategoryProductsGetController
+      beautyProductDeleteController,
+      allBeautyCategoryProductsGetController,
+      medicineProductCreateGetController,
+      medicineProductCreatePostController,
+      singleMedicineProductGetController,
+      medicineProductEditGetController,
+      medicineProductEditPostController,
+      medicineproductDeleteController,
+      allMedicineCategoryProductsGetController
     } = require('../controllers/productController');
 const productValidator = require('../validator/product/productValidator');
 
@@ -36,7 +44,14 @@ router.post('/beauty/add-product', isAuthenticated, productimgsUpload.array('ite
 router.get('/beauty/:productId', isAuthenticated, singlebeautyProductGetController);
 router.get('/beauty/edit-product/:productId', isAuthenticated, beautyProductEditGetController);
 router.post('/beauty/edit-product/:productId', isAuthenticated, productValidator, beautyProductEditPostController);
-router.get('/beauty/delete/:productId', isAuthenticated, beautyproductDeleteController);
+router.get('/beauty/delete/:productId', isAuthenticated, beautyProductDeleteController);
 
+router.get('/medicine', isAuthenticated, allMedicineCategoryProductsGetController);
+router.get('/medicine/add-product', isAuthenticated, medicineProductCreateGetController);
+router.post('/medicine/add-product', isAuthenticated, productimgsUpload.array('itemimg', 3), productValidator, medicineProductCreatePostController);
+router.get('/medicine/:productId', isAuthenticated, singleMedicineProductGetController);
+router.get('/medicine/edit-product/:productId', isAuthenticated, medicineProductEditGetController);
+router.post('/medicine/edit-product/:productId', isAuthenticated, productValidator, medicineProductEditPostController);
+router.get('/medicine/delete/:productId', isAuthenticated, medicineproductDeleteController);
 
 module.exports = router;

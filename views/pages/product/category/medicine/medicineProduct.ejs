@@ -1,0 +1,81 @@
+<%- include('../../../../partials/header.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-8">
+      <div class="card mt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-secondary text-center mt-1">Add product</h4>
+          <form action="/product/medicine/add-product" method="post" enctype="multipart/form-data" class="mt-5">
+            <div class="mb-3">
+              <label for="itemname" class="form-label">Product Name</label>
+              <input type="text" class="form-control <%= errors.itemname ? 'is-invalid' : '' %>" id="itemname" name="itemname">
+              <span class="text-danger">
+                <%= errors.itemname %> 
+              </span>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price (Taka)</label>
+                  <input type="text" class="form-control <%= errors.price ? 'is-invalid' : '' %>" id="price" name="price">
+                  <span class="text-danger">
+                    <%= errors.price %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="quantity" class="form-label">Quantity</label>
+                  <input type="number" class="form-control <%= errors.quantity ? 'is-invalid' : '' %>" id="quantity" name="quantity">
+                  <span class="text-danger">
+                    <%= errors.quantity %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="expireDate" class="form-label">Expire Date</label>
+                  <input type="date" class="form-control <%= errors.expireDate ? 'is-invalid' : '' %>" id="expireDate" name="expireDate">
+                  <span class="text-danger">
+                    <%= errors.expireDate %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="manufactureCompany" class="form-label">ManufactureCompany</label>
+                  <input type="text" class="form-control <%= errors.manufactureCompany ? 'is-invalid' : '' %>" id="manufactureCompany" name="manufactureCompany">
+                  <span class="text-danger">
+                    <%= errors.manufactureCompany %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="itemimg" class="form-label">Attach product picture (must be select one)</label>
+              <input type="file" class="form-control <%= errors.itemimg? 'is-invalid' : '' %>" id="itemimg" name="itemimg" multiple>
+              <% if (errors.itemimg) { %>
+                <p class="text-danger mt-2"><%= errors.itemimg %></p>
+              <% } else{%>
+                <p class="text-warning mt-2" id="warning">Item images must be less then 50kb & resulation width 150px * height 100px</p>
+              <% } %> 
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Add Product">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/scripts/productimgValidation.js"></script>
+</body>
+</html>

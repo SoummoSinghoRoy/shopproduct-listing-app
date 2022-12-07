@@ -1,0 +1,89 @@
+<%- include('../../../../partials/header.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+      <div class="card mb-3 mt-2 px-2 shadow-sm">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Edit product</h5>
+              <form action="/product/medicine/edit-product/<%= singlemedicine._id %> " method="post" class="mt-5">
+                <div class="mb-3">
+                  <label for="itemname" class="form-label">Product Name</label>
+                  <input type="text" class="form-control <%= errors.itemname ? 'is-invalid' : '' %>" id="itemname" name="itemname" value="<%= singlemedicine.itemname %>">
+                  <span class="text-danger">
+                    <%= errors.itemname %> 
+                  </span>
+                </div>
+    
+                <div class="row">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Price</label>
+                      <input type="text" class="form-control <%= errors.price ? 'is-invalid' : '' %>" id="price" name="price" value="<%= singlemedicine.price %>">
+                      <span class="text-danger">
+                        <%= errors.price %> 
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="quantity" class="form-label">Quantity</label>
+                      <input type="number" class="form-control <%= errors.quantity ? 'is-invalid' : '' %>" id="quantity" name="quantity" value="<%= singlemedicine.quantity %>">
+                      <span class="text-danger">
+                        <%= errors.quantity %> 
+                      </span>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="expireDate" class="form-label">Expire Date</label>
+                      <input type="date" class="form-control <%= errors.expireDate ? 'is-invalid' : '' %>" id="expireDate" name="expireDate" value="<%= singlemedicine.expireDate %>">
+                      <span class="text-danger">
+                        <%= errors.expireDate %> 
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="manufactureCompany" class="form-label">ManufactureCompany</label>
+                      <input type="text" class="form-control <%= errors.manufactureCompany ? 'is-invalid' : '' %>" id="manufactureCompany" name="manufactureCompany" value="<%= singlemedicine.manufactureCompany %>">
+                      <span class="text-danger">
+                        <%= errors.manufactureCompany %> 
+                      </span>
+                    </div>
+                  </div>
+                </div>
+    
+                <input class="btn btn-primary" type="submit" value="Update Product">
+              </form>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <% let productImg; %> 
+            <% for( let product = 0; product < singlemedicine.itemimg.length; product++ ) { %>
+             <% productImg = singlemedicine.itemimg[0] %> 
+            <% } %>
+            <img src="<%= productImg %> " class="img-fluid rounded-start mt-5" style="width: 200px; height: auto">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>See the product more angel</h5>
+            <% singlemedicine.itemimg.forEach(item => { %>
+              <img src="<%= item %> " class="img-fluid" style= "width: 200px; height: auto">
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

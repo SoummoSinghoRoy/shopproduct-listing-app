@@ -37,7 +37,10 @@
 12. food category all products template/page done.
 13. Beauty category product add template design, functionality, validation done.
 14. Beauty category product delete functionality done. when a shop owner delete single by single all product. owner back respond to add a product page. it's functionality done.
-15. Beautycategory all products template/page done.
+15. Beauty category all products template/page done.
+16. Medicine category product add template design, functionality, validation done.
+17. Medicine category product delete functionality done. when a shop owner delete single by single all product. owner back respond to add a product page. it's functionality done.
+18. Medicine category all products template/page done.
 
 #### What i learned to do this project - 
 
