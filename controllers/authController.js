@@ -4,6 +4,8 @@ const { validationResult } = require('express-validator');
 const Shop = require('../models/Shop');
 const User = require('../models/User');
 const Food = require('../models/products-categories/Food');
+const Beauty = require('../models/products-categories/Beauty');
+const Medicine = require('../models/products-categories/Medicine');
 
 exports.signUpGetController = async (req, res, next) => {
   return res.render('pages/auth/signup.ejs', {
@@ -121,6 +123,7 @@ exports.ownerProfileDeleteController = async (req, res, next) => {
     const shop = await Shop.findOne({user: req.userprofile._id})
     const foods = await Food.find({shop: shop._id})
     const beautyProducts = await Beauty.find({shop: shop._id})
+    const medicineProducts = await Medicine.find({shop: shop._id})
 
     if(userprofile) {
       await User.deleteOne({_id: req.userprofile._id})
@@ -153,9 +156,22 @@ exports.ownerProfileDeleteController = async (req, res, next) => {
       }
 
       if(beautyProducts.length !== 0) {
-        await beautyProducts.deleteMany({foods})
+        await Beauty.deleteMany({foods})
         beautyProducts.map(beautyProduct => {
           beautyProduct.itemimg.map(img => {
+            fs.unlink(`public${img}`, err => {
+              if(err) {
+                throw err
+              }
+            })
+          })
+        })
+      }
+
+      if(medicineProducts.length !== 0) {
+        await Medicine.deleteMany({foods})
+        medicineProducts.map(medicineProduct => {
+          medicineProduct.itemimg.map(img => {
             fs.unlink(`public${img}`, err => {
               if(err) {
                 throw err
