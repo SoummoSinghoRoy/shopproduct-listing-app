@@ -3,6 +3,7 @@
 * Task - shop edit + profile edit er option rakhte hobe sidebar e.
 * Task - Need to do create 404 & 500 page.
 * Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
+* Task - need to handle navigation link for general user. this task will be done when work with api.
 
 
 ### Project Requirements 
