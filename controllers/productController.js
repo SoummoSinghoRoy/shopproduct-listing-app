@@ -9,10 +9,15 @@ const Medicine = require('../models/products-categories/Medicine');
 exports.allProductsGetController = async (req, res, next) => {
   try {
     const shop = await Shop.findOne({user: req.userprofile._id})
-
     if(shop) {
+      const foods = await Food.find({shop: shop._id}).limit(9)
+      const beauties = await Beauty.find({shop: shop._id}).limit(9)
+      const medicines = await Medicine.find({shop: shop._id}).limit(9)
+
       return res.render('pages/product/allproductsOwner.ejs', {
-        title: 'All products'
+        title: 'All products',
+        shop,
+        foods, beauties, medicines
       })
     }
     return res.redirect('/shop/createshop')
@@ -365,7 +370,7 @@ exports.beautyProductDeleteController = async (req, res, next) => {
 
     if(singleBeauty) {
       await Beauty.findOneAndDelete({_id: productId})
-      
+
       await Shop.findOneAndUpdate(
         {user: req.userprofile._id},
         {$pull: {'beauty': singleBeauty._id}}

@@ -1,24 +1,21 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
-* Task - Viewshop template e product category ta niye kaj korbo jkhn product add kora niye kaj hobe.
-* Task - shop edit + profile edit er option rakhte hobe sidebar e.
 * Task - Need to do create 404 & 500 page.
 * Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
-* Task - need to handle navigation link for general user. this task will be done when work with api.
+* Task - need to handle navigation link for general user. this task will be done when work with api. also handle navigation link task for shop owner.
 
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
 2. navigation(after creation shop owner profile) - all products(for shop owner), log out & include search 
-3. sidebar nav(after creation shop owner profile/ authenticated owner profile) - all products(for shop owner), category wise product add + view products (with dropdown), Shops(with dropdown) view shop & edit shop, edit owner profile, log out
-4. edit product button will keep internally view single product page. but edit functionality wiil be appeared for authenticated profile. 
-5. Keep available all shops products for general user in all products page. since all categories product we can populate from shop db.
-6. But shop owner will get only own shop products in all products page.
-7. Existing user cannot create more than one shop with one email. While creating the shop, email + password validation should be checked so that none of them match.
-8. Need all shops products which can get by a api.
-9. all neccessery router will be restricted such as - shop create, signup etc.
-10. if a user didn't have a shop this user can't operate other operation such as product add, edit, delete.
-11. all products have 2 different template one for shop owner & other one for general user.
-12. all products page jeta general user er hobe tar product er sathe shop profile link kora thakbe.
+3. edit product button will keep internally view single product page. but edit functionality wiil be appeared for authenticated profile. 
+4. Keep available all shops products for general user in all products page. since all categories product we can populate from shop db.
+5. But shop owner will get only own shop products in all products page.
+6. Existing user cannot create more than one shop with one email. While creating the shop, email + password validation should be checked so that none of them match.
+7. Need all shops products which can get by a api.
+8. all neccessery router will be restricted such as - shop create, signup etc.
+9. if a user didn't have a shop this user can't operate other operation such as product add, edit, delete.
+10. all products have 2 different template one for shop owner & other one for general user.
+11. all products page jeta general user er hobe tar product er sathe shop profile link kora thakbe.
 
 ### Unsuccessfull Task
 1. multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. ja ekhono solve korte parini.
@@ -56,3 +53,5 @@
 9. jokhon db model ke notun data diye update kora hobe tokhon update er somoy bole dite hobe je sob kichu new ja. new ekta property value hobe true. (eti mongoose er khetre).
 10. amra jokhon form e enctype = multipart/formdata use korbo tokhon route er sathe must middleware use hobe na hole data req body theke paoya jabe na. tai file baad e form e kaj korle enctype na define kora vlo r jodi kori tahole file handle korar je middleware ache tar documentation follow kore file baad e kaj korar je instruction dibe seti follow korbo.
 11. jkhn kono data delete korar por onyo kothao response redirect korbo tokhon delete routing hobe get method e but kono redirection hobe na just data ta remove hobe tokhon delete method use korbo jemon - data table theke data delete kora.
+12. jkhn database er kono data ke ekotrito kore ekta data array ba object e rakhle specially array te tokhon db theke data ber kore ene spread kore dite pari spread operator er madhyome. er fole sadharon obstai db theke data ber korar somoy array hisebe data dei seta tokhon spread hoye jai. (mongoose er jonyo projojyo)
+13. jkhn db model theke data ber kora hobe kintu seti limited mane sob drkr nai kichu drkr. tkhn model er sathe limit() method use korbo. eti pagination er khetre help kore. (mongoose er jonyo projojyo)

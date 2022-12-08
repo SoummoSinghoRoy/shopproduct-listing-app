@@ -1,6 +1,94 @@
 <%- include('../../partials/header.ejs') %>
 
-<h2>Shop all product page for owner</h2>
-<!-- shop name will include insted of shop -->
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="card my-3">
+          <% let coverimg; %> 
+          <% for( let cover = 0; cover < shop.shopimgs.length; cover++ ) { %>
+            <% coverimg = shop.shopimgs[0] %> 
+          <% } %>
+          <img src="<%= coverimg %> " class="card-img-top px-1" style="width: auto; height: 450px;">
+          <h4 class="text-center text-success py-3">All product from <%= shop.shopname %></h4>
+          <div class="card-body">
+            <div class="d-flex">
+              <h5 class="card-title py-3 me-auto">All foods Items</h5>
+              <a href="/product/food">View More</a>
+            </div>
+            <div class="row">
+              <% foods.forEach(food => { %>
+                <div class="col-4">
+                  <div class="card">
+                    <% let productThumbnail; %> 
+                    <% for( let thumbnail = 0; thumbnail < food.itemimg.length; thumbnail++ ) { %>
+                      <% productThumbnail = food.itemimg[0] %> 
+                    <% } %>
+                    <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= food.itemname %></h5>
+                      <p><span>Price:</span>&nbsp;<%= food.price %>&nbsp;Tk.</p>
+                      <a href="/product/food/<%= food._id %>" class="card-link">view details</a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="d-flex">
+              <h5 class="card-title py-3 me-auto">All medicines Items</h5>
+              <a href="/product/medicine">View More</a>
+            </div>
+            <div class="row">
+              <% medicines.forEach(medicine => { %>
+                <div class="col-4">
+                  <div class="card">
+                    <% let productThumbnail; %> 
+                    <% for( let thumbnail = 0; thumbnail < medicine.itemimg.length; thumbnail++ ) { %>
+                      <% productThumbnail = medicine.itemimg[0] %> 
+                    <% } %>
+                    <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= medicine.itemname %></h5>
+                      <p><span>Price:</span>&nbsp;<%= medicine.price %>&nbsp;Tk.</p>
+                      <a href="/product/medicine/<%= medicine._id %>" class="card-link">view details</a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="d-flex">
+              <h5 class="card-title py-3 me-auto">All beauties & makeup Items</h5>
+              <a href="/product/beauty">View More</a>
+            </div>
+            <div class="row">
+              <% beauties.forEach(beauty => { %>
+                <div class="col-4">
+                  <div class="card">
+                    <% let productThumbnail; %> 
+                    <% for( let thumbnail = 0; thumbnail < beauty.itemimg.length; thumbnail++ ) { %>
+                      <% productThumbnail = beauty.itemimg[0] %> 
+                    <% } %>
+                    <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= beauty.itemname %></h5>
+                      <p><span>Price:</span>&nbsp;<%= beauty.price %>&nbsp;Tk.</p>
+                      <a href="/product/beauty/<%= beauty._id %>" class="card-link">view details</a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>

@@ -13,11 +13,11 @@
             <% medicineProducts.forEach(medicineProducts => { %>
               <div class="col-4">
                 <div class="card">
-                  <% let productThumnail; %> 
+                  <% let productThumbnail; %> 
                   <% for( let thumbnail = 0; thumbnail < medicineProducts.itemimg.length; thumbnail++ ) { %>
-                    <% productThumnail = medicineProducts.itemimg[0] %> 
+                    <% productThumbnail = medicineProducts.itemimg[0] %> 
                   <% } %>
-                  <img src="<%= productThumnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                  <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
                   <div class="card-body">
                     <h5 class="card-title"><%= medicineProducts.itemname %></h5>
                     <p><span>Price:</span>&nbsp;<%= medicineProducts.price %>&nbsp;Tk.</p>
