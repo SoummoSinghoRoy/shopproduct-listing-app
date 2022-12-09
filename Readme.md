@@ -2,7 +2,7 @@
 * Task - Need to do create 404 & 500 page.
 * Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
 * Task - need to handle navigation link for general user. this task will be done when work with api. also handle navigation link task for shop owner.
-
+* Task - ekhono porjonto search functionality'r itemname diye search korle search result asche kintu category name diye dile asche na. 
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
@@ -39,7 +39,8 @@
 16. Medicine category product add template design, functionality, validation done.
 17. Medicine category product delete functionality done. when a shop owner delete single by single all product. owner back respond to add a product page. it's functionality done.
 18. Medicine category all products template/page done.
-
+19. All products page for shop owner functionality, template design done.
+20. model fields/ schema indexing & weights sets done. product item name search query functionality done.
 #### What i learned to do this project - 
 
 1. When worked with authentication we have to do work with session first then authentication, because when we work with session we must keep user activity record so authentication work with based on user data & session.
@@ -55,3 +56,5 @@
 11. jkhn kono data delete korar por onyo kothao response redirect korbo tokhon delete routing hobe get method e but kono redirection hobe na just data ta remove hobe tokhon delete method use korbo jemon - data table theke data delete kora.
 12. jkhn database er kono data ke ekotrito kore ekta data array ba object e rakhle specially array te tokhon db theke data ber kore ene spread kore dite pari spread operator er madhyome. er fole sadharon obstai db theke data ber korar somoy array hisebe data dei seta tokhon spread hoye jai. (mongoose er jonyo projojyo)
 13. jkhn db model theke data ber kora hobe kintu seti limited mane sob drkr nai kichu drkr. tkhn model er sathe limit() method use korbo. eti pagination er khetre help kore. (mongoose er jonyo projojyo)
+14. kono application er search functionality kaj korte chaile alada ekta controller & route niye kaj korbo search er jonyo. karon search field ta ekta form handle kore r form thakle action thakbe. r action thakle route lagbe r route thakle tar controller dorkar. ebong obosyoi serach er jonyo je keayword gulo ta ke model er vitor indexing kore nite hobe. ebong search er request thakbe query hisebe tai search terms ke extract korte hobe req.query theke. search er sathe pagination er ekta bypar thake karon data search korle onek onke data aste pare tai pagination use kora better. ejonyo pagination kaj tao korte hobe. erpor  search er query'r je system ache segulo niye kaj korte hobe. search input filed er name hisebe searchTerm dite hobe. searchTerm muloto req.query er object jar modhye sokol search keyword thakbe.
+15. jokhon amdr kache ekadhik sub model thakbe example - product er category. tokhon jodio sokol category product ke ek sathe dekhanor dorkar pore tokhon obosyoi tar jonyo ekta model banabo ja sokol data ekotre pete ba searching, filter er moto query parameter er kaj e subidha dibe. ekhetre model er schema hobe category ba reference model r type hobe array ba object. 

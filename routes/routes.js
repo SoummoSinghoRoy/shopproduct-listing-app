@@ -1,8 +1,13 @@
 const authRoute = require('./authRoute');
 const shopRoute = require('./shopRoute');
 const productRoute = require('./productRoute');
+const searchRoute = require('./searchRoute');
 
 const routes = [
+  {
+    path: '/search',
+    handler: searchRoute
+  },
   {
     path: '/shop',
     handler: shopRoute

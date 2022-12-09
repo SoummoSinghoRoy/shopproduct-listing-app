@@ -38,6 +38,14 @@ const FoodSchema = new Schema ({
 { timestamps: true }
 )
 
+FoodSchema.index({
+  itemname: 'text'
+},{
+  weights: {
+    itemname: 5
+  }
+})
+
 const Food = model('FoodItem', FoodSchema)
 
 module.exports = Food

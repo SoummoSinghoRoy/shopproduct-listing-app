@@ -41,6 +41,14 @@ const MedicineSchema = new Schema ({
 { timestamps: true }
 )
 
+MedicineSchema.index({
+  itemname: 'text'
+},{
+  weights: {
+    itemname: 5
+  }
+})
+
 const MedicineItem = model('MedicineItem', MedicineSchema)
 
 module.exports = MedicineItem

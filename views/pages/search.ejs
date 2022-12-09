@@ -1,0 +1,96 @@
+<%- include('../partials/header.ejs') %> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="card mt-5 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-secondary text-center pb-4"><%= title %> </h4>
+          <div class="row">
+            <% foods.forEach(food => { %>
+              <div class="col-4">
+                <div class="card">
+                  <% let productThumbnail; %> 
+                  <% for( let thumbnail = 0; thumbnail < food.itemimg.length; thumbnail++ ) { %>
+                    <% productThumbnail = food.itemimg[0] %> 
+                  <% } %>
+                  <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= food.itemname %></h5>
+                    <p><span>Price:</span>&nbsp;<%= food.price %>&nbsp;Tk.</p>
+                    <a href="/product/food/<%= food._id %>" class="card-link">view details</a>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div> 
+
+          <div class="row">
+            <% medicines.forEach(medicine => { %>
+              <div class="col-4">
+                <div class="card">
+                  <% let productThumbnail; %> 
+                  <% for( let thumbnail = 0; thumbnail < medicine.itemimg.length; thumbnail++ ) { %>
+                    <% productThumbnail = medicine.itemimg[0] %> 
+                  <% } %>
+                  <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= medicine.itemname %></h5>
+                    <p><span>Price:</span>&nbsp;<%= medicine.price %>&nbsp;Tk.</p>
+                    <a href="/product/medicine/<%= medicine._id %>" class="card-link">view details</a>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          
+          <div class="row">
+            <% beauties.forEach(beauty => { %>
+              <div class="col-4">
+                <div class="card">
+                  <% let productThumbnail; %> 
+                  <% for( let thumbnail = 0; thumbnail < beauty.itemimg.length; thumbnail++ ) { %>
+                    <% productThumbnail = beauty.itemimg[0] %> 
+                  <% } %>
+                  <img src="<%= productThumbnail %> " class="card-img-top mx-auto" style="width: 150px; height: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= beauty.itemname %></h5>
+                    <p><span>Price:</span>&nbsp;<%= beauty.price %>&nbsp;Tk.</p>
+                    <a href="/product/beauty/<%= beauty._id %>" class="card-link">view details</a>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row py-4">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <% if (totalPages > 1) { %>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
+              <a class="page-link" href="<%=`/search?searchTerm=${searchTerm}&page=${currentpage - 1}`%> ">previous</a>
+            </li>
+            <% for( let i = 1; i <= totalPages; i++ ) { %>
+              <li class="page-item <%= currentpage === i ? 'active' : '' %>">
+                <a class="page-link" href="<%=`/search?searchTerm=${searchTerm}&page=${i}`%>"><%= i %></a>
+              </li>
+            <% } %>
+            <li class="page-item <%= currentpage === totalPages ? 'disabled' : '' %>">
+              <a class="page-link" href="<%=`/search?searchTerm=${searchTerm}&page=${currentpage + 1}`%> ">next</a>
+            </li>
+          </ul>
+        </nav>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

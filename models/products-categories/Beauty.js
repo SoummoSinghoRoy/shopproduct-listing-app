@@ -41,6 +41,14 @@ const BeautySchema = new Schema ({
 { timestamps: true }
 )
 
+BeautySchema.index({
+  itemname: 'text'
+},{
+  weights: {
+    itemname: 5
+  }
+})
+
 const BeautyItem = model('BeautyItem', BeautySchema)
 
 module.exports = BeautyItem
