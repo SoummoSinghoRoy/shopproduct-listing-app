@@ -6,11 +6,13 @@ const User = require('../models/User');
 const Food = require('../models/products-categories/Food');
 const Beauty = require('../models/products-categories/Beauty');
 const Medicine = require('../models/products-categories/Medicine');
+const Flash = require('../utils/Flash');
 
 exports.signUpGetController = async (req, res, next) => {
   return res.render('pages/auth/signup.ejs', {
     title: 'Sign up here',
-    errors: {}
+    errors: {},
+    flashMessage: Flash.getMessage(req)
   })
 }
 
@@ -20,10 +22,13 @@ exports.signUpPostController = async (req, res, next) => {
   if(req.file) {
     let errors = validationResult(req).formatWith(error => error.msg)
     const uploadedProfilepic = `/uploads/profilePics/${req.file.filename}`
+    
     if(!errors.isEmpty()) {
+      req.flash('fail', 'something happend wrong')
       return res.render('pages/auth/signup.ejs', {
         title: 'Sign up here',
-        errors: errors.mapped()
+        errors: errors.mapped(),
+        flashMessage: Flash.getMessage(req)
       })
     }
     try {
@@ -42,7 +47,6 @@ exports.signUpPostController = async (req, res, next) => {
           return next(err)
         }
       })
-
       return res.redirect('/shop/createshop')
   
     } catch (error) {
@@ -50,10 +54,13 @@ exports.signUpPostController = async (req, res, next) => {
     }
   }else {
     let errors = validationResult(req).formatWith(error => error.msg)
+    
     if(!errors.isEmpty()) {
+      req.flash('fail', 'something happend wrong')
       return res.render('pages/auth/signup.ejs', {
         title: 'Sign up here',
-        errors: errors.mapped()
+        errors: errors.mapped(),
+        flashMessage: Flash.getMessage(req)
       })
     }
   }
@@ -62,7 +69,8 @@ exports.signUpPostController = async (req, res, next) => {
 exports.logInGetController = (req, res, next) => {
   res.render('pages/auth/login.ejs', {
     title: 'Log in here',
-    errors: {}
+    errors: {},
+    flashMessage: Flash.getMessage(req)
   })
 }
 
@@ -71,38 +79,46 @@ exports.loginPostController = async (req, res, next) => {
   let errors = validationResult(req).formatWith(error => error.msg)
 
   if(!errors.isEmpty()) {
+    req.flash('fail', 'Something wrong')
     return res.render('pages/auth/login.ejs', {
       title: 'Log in here',
-      errors: errors.mapped()
+      errors: errors.mapped(),
+      flashMessage: Flash.getMessage(req)
     })
   }
 
   try {
     const profile = await User.findOne({email})
-
+    
     if(!profile) {
+      req.flash('fail', 'email not valid')
       return res.render('pages/auth/login.ejs', {
         title: 'Log in here',
-        errors: errors.mapped()
+        errors: errors.mapped(),
+        flashMessage: Flash.getMessage(req)
       })
     }
 
     const passwordmatch = await bcrypt.compare(password, profile.password) 
+    
     if(!passwordmatch) {
+      req.flash('fail', `password doesn't match`)
       return res.render('pages/auth/login.ejs', {
         title: 'Log in here',
-        errors: errors.mapped()
+        errors: errors.mapped(),
+        flashMessage: Flash.getMessage(req)
       })
     }
+    
     req.session.isLoggedIn = true
     req.session.userprofile = profile
     req.session.save(err => {
       if(err) {
         return next(err)
       }
+      req.flash('success', 'Successfully logged in')
+      return res.redirect('/product/allproducts')
     })
-
-    return res.redirect('/product/allproducts')
   } catch (error) {
     next(error)
   }

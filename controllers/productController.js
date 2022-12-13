@@ -5,10 +5,12 @@ const Shop = require('../models/Shop');
 const Food = require('../models/products-categories/Food');
 const Beauty = require('../models/products-categories/Beauty');
 const Medicine = require('../models/products-categories/Medicine');
+const Flash = require('../utils/Flash');
 
 exports.allProductsGetController = async (req, res, next) => {
   try {
     const shop = await Shop.findOne({user: req.userprofile._id})
+    
     if(shop) {
       const foods = await Food.find({shop: shop._id}).limit(9)
       const beauties = await Beauty.find({shop: shop._id}).limit(9)
@@ -17,7 +19,8 @@ exports.allProductsGetController = async (req, res, next) => {
       return res.render('pages/product/allproductsOwner.ejs', {
         title: 'All products',
         shop,
-        foods, beauties, medicines
+        foods, beauties, medicines,
+        flashMessage: Flash.getMessage(req)
       })
     }
     return res.redirect('/shop/createshop')

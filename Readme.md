@@ -3,6 +3,8 @@
 * Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
 * Task - need to handle navigation link for general user. this task will be done when work with api. also handle navigation link task for shop owner.
 * Task - ekhono porjonto search functionality'r itemname diye search korle search result asche kintu category name diye dile asche na. 
+* Task - api data theke data pabe ei kaj sesh ekhn baki pagination er kaj.
+* Task - api theke data niye root page/ route e data soho render hobe ei kaj korte hobe + single product dekhanor kaj korte hobe. ar itemperpage 3 ta ache pore 16 ta korte hobe.
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
@@ -41,6 +43,8 @@
 18. Medicine category all products template/page done.
 19. All products page for shop owner functionality, template design done.
 20. model fields/ schema indexing & weights sets done. product item name search query functionality done.
+21. All products + single product get api done.
+
 #### What i learned to do this project - 
 
 1. When worked with authentication we have to do work with session first then authentication, because when we work with session we must keep user activity record so authentication work with based on user data & session.
@@ -57,4 +61,6 @@
 12. jkhn database er kono data ke ekotrito kore ekta data array ba object e rakhle specially array te tokhon db theke data ber kore ene spread kore dite pari spread operator er madhyome. er fole sadharon obstai db theke data ber korar somoy array hisebe data dei seta tokhon spread hoye jai. (mongoose er jonyo projojyo)
 13. jkhn db model theke data ber kora hobe kintu seti limited mane sob drkr nai kichu drkr. tkhn model er sathe limit() method use korbo. eti pagination er khetre help kore. (mongoose er jonyo projojyo)
 14. kono application er search functionality kaj korte chaile alada ekta controller & route niye kaj korbo search er jonyo. karon search field ta ekta form handle kore r form thakle action thakbe. r action thakle route lagbe r route thakle tar controller dorkar. ebong obosyoi serach er jonyo je keayword gulo ta ke model er vitor indexing kore nite hobe. ebong search er request thakbe query hisebe tai search terms ke extract korte hobe req.query theke. search er sathe pagination er ekta bypar thake karon data search korle onek onke data aste pare tai pagination use kora better. ejonyo pagination kaj tao korte hobe. erpor  search er query'r je system ache segulo niye kaj korte hobe. search input filed er name hisebe searchTerm dite hobe. searchTerm muloto req.query er object jar modhye sokol search keyword thakbe.
-15. jokhon amdr kache ekadhik sub model thakbe example - product er category. tokhon jodio sokol category product ke ek sathe dekhanor dorkar pore tokhon obosyoi tar jonyo ekta model banabo ja sokol data ekotre pete ba searching, filter er moto query parameter er kaj e subidha dibe. ekhetre model er schema hobe category ba reference model r type hobe array ba object. 
+15. jokhon amdr kache ekadhik sub model thakbe example - product er category. tokhon jodio sokol category product ke ek sathe dekhanor dorkar pore tokhon obosyoi tar jonyo ekta model banabo ja sokol data ekotre pete ba searching, filter er moto query parameter er kaj e subidha dibe. ekhetre model er schema hobe category ba reference model r type hobe array ba object.
+16. amra flash/alert deoyar jonyo je connect-flash middleware ta use korchi eta muloto middleware hisebe use hobe. ja paoya jabe request object er flash namok property hisebe ja ekta function. eti 2 ta argument nei 1 key/name - (key/name bolte alert er reason ke bojhai hote pare success. fail, warning), 2nd argument hisebe alert message. ebong eti get & post/ update parallally kaj kore. amar jekhan theke ba je controller theke response pathabe sekhane req.flash() er 2 ta argument dara define korbo opor dike e response pathano hobe jehkane tar jonyo nischoy controller thakbe sekhane flash message ta extract korbo req.flash() use kore e khetre sudhu flash er jonyo je name/key setiy use korte hobe. flash ba alert jehetu request er opor base kore hobe tai ekta utility hisebe flash ke baniye sob jaygai use korte pari.
+17. kono array theke single single kore value paoyar jonyo for..of loop method use korte hoy. 

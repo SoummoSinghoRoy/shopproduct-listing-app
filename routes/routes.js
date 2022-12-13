@@ -2,8 +2,13 @@ const authRoute = require('./authRoute');
 const shopRoute = require('./shopRoute');
 const productRoute = require('./productRoute');
 const searchRoute = require('./searchRoute');
+const allProductsApiRoute = require('../api/routes/allProductsApiRoute');
 
 const routes = [
+  {
+    path: '/api',
+    handler: allProductsApiRoute
+  },
   {
     path: '/search',
     handler: searchRoute
@@ -22,8 +27,11 @@ const routes = [
   },
   {
     path: '/',
-    handler: (req, res) => {
-      res.send(`<h3>Greetings Product Listing App</h3>`)
+    handler: (req, res, next) => {
+      res.render('pages/product/allproductsForVisitor.ejs', {
+        title: 'All products',
+        flashMessage: {}
+      })
     }
   },
 ]

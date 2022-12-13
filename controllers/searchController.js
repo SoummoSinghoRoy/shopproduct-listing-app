@@ -5,7 +5,7 @@ const Beauty = require('../models/products-categories/Beauty');
 exports.searchResultController = async (req, res, next) => {
   let searchTerm = req.query.searchTerm
   let currentpage = parseInt(req.query.page) || 1
-  let itemperPage = 1
+  let itemperPage = 12
 
   try {
 
