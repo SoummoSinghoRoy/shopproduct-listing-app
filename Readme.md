@@ -1,10 +1,9 @@
 * Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task - Need to do create 404 & 500 page.
 * Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
-* Task - need to handle navigation link for general user. this task will be done when work with api. also handle navigation link task for shop owner.
 * Task - ekhono porjonto search functionality'r itemname diye search korle search result asche kintu category name diye dile asche na. 
+* Task - single product data template er kaj korte hobe.
 * Task - api data theke data pabe ei kaj sesh ekhn baki pagination er kaj.
-* Task - api theke data niye root page/ route e data soho render hobe ei kaj korte hobe + single product dekhanor kaj korte hobe. ar itemperpage 3 ta ache pore 16 ta korte hobe.
 
 ### Project Requirements 
 1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
@@ -44,6 +43,7 @@
 19. All products page for shop owner functionality, template design done.
 20. model fields/ schema indexing & weights sets done. product item name search query functionality done.
 21. All products + single product get api done.
+22. now general visitor can show all products.
 
 #### What i learned to do this project - 
 
