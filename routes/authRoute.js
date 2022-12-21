@@ -9,9 +9,12 @@ const {
   logInGetController,
   loginPostController,
   logOutController,
-  ownerProfileDeleteController
+  ownerProfileDeleteController,
+  changeInfoGetController,
+  changeInfoPostController
 } = require('../controllers/authController');
 const {isAuthenticated, isUnAuthenticated} = require('../middlewares/authMiddleware');
+const changeinfoValidator = require('../validator/auth/changeinfoValidator');
 
 router.get('/signup', isUnAuthenticated, signUpGetController);
 router.post('/signup', isUnAuthenticated, profilePicUpload.single('profilepic'), signupValidator, signUpPostController);
@@ -22,5 +25,8 @@ router.post('/login', isUnAuthenticated, loginValidator, loginPostController);
 router.get('/logout', isAuthenticated, logOutController);
 
 router.get('/delete', isAuthenticated, ownerProfileDeleteController);
+
+router.get('/changeinfo', isAuthenticated, changeInfoGetController);
+router.post('/changeinfo', isAuthenticated, changeinfoValidator, changeInfoPostController);
 
 module.exports = router;

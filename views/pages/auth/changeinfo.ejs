@@ -1,0 +1,44 @@
+<%- include('../../partials/header.ejs') %> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="card mt-2 px-2 shadow-sm">
+        <div class="card-body mb-3">
+          <h4 class="card-title text-secondary py-3">Change email & password</h4>
+          <form action="/auth/changeinfo" method="post">
+            <div class="mb-3">
+              <label for="email" class="form-label">Enter correct email</label>
+              <input type="email" class="form-control <%= errors.email ? 'is-invalid' : '' %>" id="email" name="email">
+              <span class="text-danger">
+                <%= errors.email %> 
+              </span>
+            </div>
+            
+            <div class="mb-3">
+              <label for="oldpassword" class="form-label">Enter your old password</label>
+              <input type="password" class="form-control <%= errors.oldpassword ? 'is-invalid' : '' %>" id="oldpassword" name="oldpassword">
+              <span class="text-danger">
+                <%= errors.oldpassword %> 
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <label for="newpassword" class="form-label">Enter strong password</label>
+              <input class="form-control <%= errors.newpassword ? 'is-invalid' : '' %>" type="password" id="newpassword" name="newpassword">
+              <span class="text-danger">
+                <%= errors.newpassword %> 
+              </span>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Change now">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

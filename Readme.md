@@ -1,5 +1,4 @@
-* Task - Need to do create 404 & 500 page.
-* Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'. 
+* Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe.
 
 ### Completed tasks -
 1. signup & login template done,
@@ -24,6 +23,7 @@
 20. model fields/ schema indexing & weights sets done. product item name search query functionality done.
 21. All products + single product get api done.
 22. now general visitor can show all products.
+23. 404 & 500 error page render done.
 
 #### What i learned to do this project - 
 

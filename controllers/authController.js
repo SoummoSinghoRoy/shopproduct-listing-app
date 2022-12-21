@@ -210,3 +210,52 @@ exports.ownerProfileDeleteController = async (req, res, next) => {
     next(error)
   }
 }
+
+exports.changeInfoGetController = async (req, res, next) => {
+  try {
+    const userprofile = await User.findOne({_id: req.userprofile._id})
+    if(userprofile) {
+      return res.render('pages/auth/changeinfo.ejs', {
+        title: 'Change email & password',
+        errors: {}
+      })
+    }
+    return res.redirect('/auth/signup')
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.changeInfoPostController = async (req, res, next) => {
+  let {email, oldpassword, newpassword} = req.body
+
+  let errors = validationResult(req).formatWith(error => error.msg)
+  if(!errors.isEmpty()) {
+    return res.render('pages/auth/changeinfo.ejs', {
+      title: 'Change email & password',
+      errors: errors.mapped()
+    })
+  }
+
+  try {
+    let match = await bcrypt.compare(oldpassword, req.userprofile.password)
+    if(!match) {
+      return res.redirect('/auth/changeinfo')
+    }
+    let hashedPassword = await bcrypt.hash(newpassword, 12)
+
+    await User.findOneAndUpdate(
+      {_id: req.userprofile._id},
+      {$set: {email, password: hashedPassword}}
+    )
+
+    return res.redirect('/shop')
+
+  } catch (error) {
+    next(error)
+  }
+  res.render('pages/auth/changeinfo.ejs', {
+    title: 'Change email & password',
+    errors: errors.mapped()
+  })
+}
