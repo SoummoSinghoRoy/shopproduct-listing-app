@@ -1,25 +1,5 @@
-* Task - Signup kore profile/user create er por login validation + login funcationality niye kaj korte hobe sathe validation e error thakle flash e seta dekhate hobe but eta flash niye kaj korar somoy.
 * Task - Need to do create 404 & 500 page.
-* Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'.
-* Task - ekhono porjonto search functionality'r itemname diye search korle search result asche kintu category name diye dile asche na. 
-* Task - single product data template er kaj korte hobe.
-* Task - api data theke data pabe ei kaj sesh ekhn baki pagination er kaj.
-
-### Project Requirements 
-1. navigation(before creation shop owner profile) - all products(for general user), sign up, log in & not include search, also invisible product delete + edit button
-2. navigation(after creation shop owner profile) - all products(for shop owner), log out & include search 
-3. edit product button will keep internally view single product page. but edit functionality wiil be appeared for authenticated profile. 
-4. Keep available all shops products for general user in all products page. since all categories product we can populate from shop db.
-5. But shop owner will get only own shop products in all products page.
-6. Existing user cannot create more than one shop with one email. While creating the shop, email + password validation should be checked so that none of them match.
-7. Need all shops products which can get by a api.
-8. all neccessery router will be restricted such as - shop create, signup etc.
-9. if a user didn't have a shop this user can't operate other operation such as product add, edit, delete.
-10. all products have 2 different template one for shop owner & other one for general user.
-11. all products page jeta general user er hobe tar product er sathe shop profile link kora thakbe.
-
-### Unsuccessfull Task
-1. multer configuration korechi kintu error dekhachhe na signup template e tobe multer nije teheke ekta error dekhacche. ja ekhono solve korte parini.
+* Task - view shop e edit password button er kaj baki. eta jkhon password change functionality niye kaj korbo tokhon korte hobe. shop create hoye gele jokhon view shop page e nibe tokhon flas dite hobe 'you are now eligable to add products'. 
 
 ### Completed tasks -
 1. signup & login template done,
@@ -63,4 +43,5 @@
 14. kono application er search functionality kaj korte chaile alada ekta controller & route niye kaj korbo search er jonyo. karon search field ta ekta form handle kore r form thakle action thakbe. r action thakle route lagbe r route thakle tar controller dorkar. ebong obosyoi serach er jonyo je keayword gulo ta ke model er vitor indexing kore nite hobe. ebong search er request thakbe query hisebe tai search terms ke extract korte hobe req.query theke. search er sathe pagination er ekta bypar thake karon data search korle onek onke data aste pare tai pagination use kora better. ejonyo pagination kaj tao korte hobe. erpor  search er query'r je system ache segulo niye kaj korte hobe. search input filed er name hisebe searchTerm dite hobe. searchTerm muloto req.query er object jar modhye sokol search keyword thakbe.
 15. jokhon amdr kache ekadhik sub model thakbe example - product er category. tokhon jodio sokol category product ke ek sathe dekhanor dorkar pore tokhon obosyoi tar jonyo ekta model banabo ja sokol data ekotre pete ba searching, filter er moto query parameter er kaj e subidha dibe. ekhetre model er schema hobe category ba reference model r type hobe array ba object.
 16. amra flash/alert deoyar jonyo je connect-flash middleware ta use korchi eta muloto middleware hisebe use hobe. ja paoya jabe request object er flash namok property hisebe ja ekta function. eti 2 ta argument nei 1 key/name - (key/name bolte alert er reason ke bojhai hote pare success. fail, warning), 2nd argument hisebe alert message. ebong eti get & post/ update parallally kaj kore. amar jekhan theke ba je controller theke response pathabe sekhane req.flash() er 2 ta argument dara define korbo opor dike e response pathano hobe jehkane tar jonyo nischoy controller thakbe sekhane flash message ta extract korbo req.flash() use kore e khetre sudhu flash er jonyo je name/key setiy use korte hobe. flash ba alert jehetu request er opor base kore hobe tai ekta utility hisebe flash ke baniye sob jaygai use korte pari.
-17. kono array theke single single kore value paoyar jonyo for..of loop method use korte hoy. 
+17. kono array theke single single kore value paoyar jonyo for..of loop method use korte pari. 
+18. jokhon pagination er kaj korbo tokhon jehetu backend + db theke kaj hobe tai ekta db model er opor base kore pagination er kaj kora btter

@@ -4,7 +4,7 @@ const Beauty = require('../../models/products-categories/Beauty');
 
 exports.allProductsApiGetController = (req, res, next) => {
   let currentpage = parseInt(req.query.page) || 1
-  let itemperPage = 3 // apatoto 3 pore 16 hobe
+  let itemperPage = 4 // apatoto 4 pore 16 hobe
 
   getAllProducts(Food, Medicine, Beauty)
                 .then(products => {

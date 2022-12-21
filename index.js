@@ -12,6 +12,20 @@ setRoutes(app)
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+app.use((req, res, next)=> {
+  let error = new Error('404 not found')
+  error.status = 404
+  next(error)
+})
+app.use((error, req, res, next)=> {
+  if(error.status === 404) {
+    return res.render('pages/error/404.ejs')
+  }
+  console.log(error);
+  return res.render('pages/error/500.ejs')
+})
+
+
 const PORT = process.env.PORT || 5050
 
 const DB_URI = `mongodb+srv://${config.get('db-admin')}:${config.get('db-password')}@shopproduct-listing.ecf4uv6.mongodb.net/shopproduct-listing-app`
